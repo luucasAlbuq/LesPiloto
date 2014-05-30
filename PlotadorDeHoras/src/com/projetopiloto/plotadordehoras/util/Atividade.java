@@ -1,12 +1,29 @@
 package com.projetopiloto.plotadordehoras.util;
 
+import com.projetopiloto.plotadordehoras.excecoes.AtividadeException;
+
+/**
+ * 
+ * @author Pablo Herivelton
+ * 
+ * @param nome - Nome da Atividade
+ * @param tempo - Tempo gasto na Atividade (Em Minutos)
+ * 
+ * @throws AtividadeException - Caso a Atividade criada seja inválida
+ *
+ */
+
 public class Atividade {
-	private String nome;
-	private Hora hora;
 	
-	public Atividade(String nome, Hora hora) {
+	private String nome;
+	private int tempo;
+	
+	public Atividade(String nome, int tempo) throws AtividadeException{
+		if (!(verificaAtividade())){
+			throw new AtividadeException("Atividade Invalida");
+		}
 		setNome(nome);
-		setHora(hora);
+		setTempo(tempo);
 	}
 
 	public String getNome() {
@@ -17,12 +34,19 @@ public class Atividade {
 		this.nome = nome;
 	}
 
-	public Hora getHora() {
-		return hora;
+	public int getTempo() {
+		return tempo;
 	}
 
-	public void setHora(Hora hora) {
-		this.hora = hora;
+	public void setTempo(int tempo) {
+		this.tempo = tempo;
+	}
+	
+	public boolean verificaAtividade(){
+		if (tempo < 0 || nome.isEmpty() || nome == null) {
+			return false;
+		}
+		return true;
 	}
 	
 }

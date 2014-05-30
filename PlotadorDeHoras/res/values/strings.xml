@@ -2,6 +2,14 @@
 <resources>
 
     <string name="app_name">Plotador de Horas</string>
+    <string name="tela_cadastro_name">Cadastro de Atividade</string>
     <string name="hello_world">Hello world!</string>
+    <string name="cadastro">Cadastrar Atividade</string>
+    <string name="Cadastro">Cadastro</string>
+    <string name="nome_atividade">Nome da Atividade</string>
+    <string name="tempo_atividade">Tempo da Atividade</string>
+    <string name="data_atividade">Data da Atividade</string>
+    <string name="botao_cadastrar">Cadastrar</string>
+    <string name="botao_voltar_atividade">Voltar</string>
 
 </resources>
