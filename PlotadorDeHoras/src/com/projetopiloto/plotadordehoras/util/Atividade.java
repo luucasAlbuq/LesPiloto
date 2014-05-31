@@ -1,5 +1,7 @@
 package com.projetopiloto.plotadordehoras.util;
 
+import java.util.Date;
+
 import com.projetopiloto.plotadordehoras.excecoes.AtividadeException;
 
 /**
@@ -17,13 +19,23 @@ public class Atividade {
 	
 	private String nome;
 	private int tempo;
+	private Date data;
 	
-	public Atividade(String nome, int tempo) throws AtividadeException{
+	public Atividade(String nome, int tempo, Date data) throws AtividadeException{
 		if (!(verificaAtividade())){
 			throw new AtividadeException("Atividade Invalida");
 		}
 		setNome(nome);
 		setTempo(tempo);
+		setData(data);
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
 	}
 
 	public String getNome() {
@@ -43,7 +55,7 @@ public class Atividade {
 	}
 	
 	public boolean verificaAtividade(){
-		if (tempo < 0 || nome.isEmpty() || nome == null) {
+		if (tempo < 0 || nome.isEmpty() || nome == null || data ==null) {
 			return false;
 		}
 		return true;

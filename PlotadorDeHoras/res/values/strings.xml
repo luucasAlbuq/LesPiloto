@@ -11,5 +11,18 @@
     <string name="data_atividade">Data da Atividade</string>
     <string name="botao_cadastrar">Cadastrar</string>
     <string name="botao_voltar_atividade">Voltar</string>
+    <string-array name="sugestao_atividades">
+      <item >Fumar</item>
+      <item >Ler</item>
+      <item >Almoçar</item>
+      <item >Jantar</item>
+      <item >Dormir</item>
+      <item >Jogar bola</item>
+      <item >Estudar</item>
+      <item >Jogar no PC</item>
+      <item >Correr</item>
+      <item >Caminhar</item>
+      <item >Projeto no Lab</item>
+      </string-array>
 
 </resources>
