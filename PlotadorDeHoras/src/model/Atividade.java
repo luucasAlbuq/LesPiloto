@@ -25,7 +25,7 @@ public class Atividade {
 		
 		verificaAtividade();
 		
-		setNome(titulo);
+		setTitulo(titulo);
 		setTempo(tempoInvestido);
 		setData(data);
 	}
@@ -38,11 +38,11 @@ public class Atividade {
 		this.data = data;
 	}
 
-	public String getNome() {
+	public String getTitulo() {
 		return titulo;
 	}
 
-	public void setNome(String nome) {
+	public void setTitulo(String nome) {
 		this.titulo = nome;
 	}
 
@@ -64,6 +64,13 @@ public class Atividade {
 			throw new AtividadeException("Título inválido");
 		}
 
+	}
+	
+	public boolean equals(Atividade atv){
+		if(atv.getTitulo().equals(this.titulo) && atv.getTempo() == this.tempoInvestido && atv.getData().equals(this.data)){
+			return true;
+		}
+		return false;
 	}
 	
 }
