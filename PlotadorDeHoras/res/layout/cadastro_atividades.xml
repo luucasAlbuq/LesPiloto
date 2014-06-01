@@ -14,15 +14,6 @@
         android:layout_marginTop="41dp"
         android:text="@string/nome_atividade" />
 
-    <EditText
-        android:id="@+id/editTempoAtividade"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tempoAtividade"
-        android:layout_below="@+id/tempoAtividade"
-        android:ems="10"
-        android:inputType="number" />
-
     <TextView
         android:id="@+id/dataAtividade"
         android:layout_width="wrap_content"
@@ -71,15 +62,25 @@
  	    android:layout_marginTop="42dp"
  	    android:text="@string/tempo_atividade" />
 
- 	<AutoCompleteTextView
- 	    android:id="@+id/autoCompleteTextNome"
+ 	<EditText
+ 	    android:id="@+id/editTempoAtividade"
+ 	    android:layout_width="100dp"
+ 	    android:layout_height="wrap_content"
+ 	    android:layout_alignLeft="@+id/tempoAtividade"
+ 	    android:layout_below="@+id/tempoAtividade"
+ 	    android:ems="10"
+ 	    android:inputType="number" >
+
+ 	    
+ 	</EditText>
+
+ 	<MultiAutoCompleteTextView
+ 	    android:id="@+id/multiAutoCompleteNome"
  	    android:layout_width="wrap_content"
  	    android:layout_height="wrap_content"
- 	    android:layout_alignLeft="@+id/botaoCadastrar"
+ 	    android:layout_alignLeft="@+id/nomeAtividade"
  	    android:layout_below="@+id/nomeAtividade"
- 	    android:ems="10" >
-
- 	    <requestFocus />
- 	</AutoCompleteTextView>
-            
+ 	    android:ems="10" ><requestFocus />
+ 	</MultiAutoCompleteTextView>
+ 	
 </RelativeLayout>
