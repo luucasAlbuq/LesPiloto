@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
+import com.projetopiloto.plotadordehoras.excecoes.AtividadeException;
+
 import model.Atividade;
 import model.NodeAtividade;
 
@@ -31,6 +33,7 @@ public class ControllerAtividade {
 		return mapaKeyAtividades.keySet();
 	}
 
+	//falta adaptar um insertion sort para inserir ordenado
 	public void add(Atividade atv) {
 		if (!getKeys().contains(atv.getTitulo())) {
 			mapaKeyAtividades.put(atv.getTitulo(), new NodeAtividade(atv));
@@ -48,7 +51,7 @@ public class ControllerAtividade {
 		NodeAtividade node = mapaKeyAtividades.get(atv.getTitulo());
 		NodeAtividade anterior = null;
 
-		while (node.getNext() != null) {
+		while (node != null) {
 
 			if (node.equals(atv)) {
 
@@ -67,12 +70,16 @@ public class ControllerAtividade {
 
 	}
 
-	public int getTempoTotalAtv(String nomeAtv) {
+	public int getTempoTotalAtv(String nomeAtv) throws AtividadeException {
+		if(!mapaKeyAtividades.keySet().contains(nomeAtv)){
+			throw new AtividadeException("Não há atividades com este titulo.");
+		}
+		
 		int tempoTotal = 0;
 
 		NodeAtividade node = mapaKeyAtividades.get(nomeAtv);
-
-		while (node.getNext() != null) {
+		
+		while (node != null) {
 			tempoTotal += node.getAtividade().getTempo();
 			node = node.getNext();
 		}
@@ -81,17 +88,24 @@ public class ControllerAtividade {
 	}
 
 	// retorna em ordem do mais recente para o mais antigo
-	public ArrayList<Atividade> getAtividade(String titulo) {
+	public ArrayList<Atividade> getAtividades(String titulo) throws AtividadeException {
+		if(!mapaKeyAtividades.keySet().contains(titulo)){
+			throw new AtividadeException("Não há atividades com este titulo.");
+		}
+		
 		ArrayList<Atividade> atvs = new ArrayList<Atividade>();
 
 		NodeAtividade node = mapaKeyAtividades.get(titulo);
-		while (node.getNext() != null) {
+		while (node != null) {
 
 			atvs.add(node.getAtividade());
 			node = node.getNext();
 		}
+		
 
 		return atvs;
 	}
+	
+	
 
 }
