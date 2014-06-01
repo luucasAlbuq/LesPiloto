@@ -1,14 +1,22 @@
 package com.example.plotadordehoras;
 
+import java.util.ArrayList;
+
+import com.projetopiloto.plotadordehoras.util.BarGraph;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
 
-    @Override
+	int[] firstData = { 23, 145, 67, 78, 86, 190, 46, 78, 167, 164 };
+	int[] secondData = { 83, 45, 168, 138, 67, 150, 64, 87, 144, 188 };
+
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -24,6 +32,24 @@ public class MainActivity extends Activity {
 				
 			}
 		});
+        
+       
+		//////////////////////////////////////////////////////////////
+		
+		Button grafico = (Button) findViewById(R.id.cadastroMin);
+		
+		grafico.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				Intent telaGrafico = new Intent(MainActivity.this, CadastrarMinSoPraTeste.class);
+				MainActivity.this.startActivity(telaGrafico);
+				
+			}
+		});
+		
+		
+        
+        
     }
-    
 }

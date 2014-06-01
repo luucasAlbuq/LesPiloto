@@ -18,7 +18,7 @@
         android:layout_below="@+id/nomeAtividade"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="52dp"
-        android:text= "@string/Cadastro" />
+        android:text="@string/Cadastro" />
 
     <TextView
         android:id="@+id/cadastro"
@@ -29,4 +29,19 @@
         android:layout_marginTop="28dp"
         android:text="@string/cadastro" />
 
-  </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/cadastroMin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="52dp"
+            android:text="Grafico" />
+    </LinearLayout>
+
+</RelativeLayout>
