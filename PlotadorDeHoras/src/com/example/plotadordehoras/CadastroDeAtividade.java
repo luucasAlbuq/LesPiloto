@@ -138,7 +138,7 @@ public class CadastroDeAtividade extends Activity{
 		
 	private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
 		public void onDateSet(DatePicker view, int ano, int mes, int dia) {
-			String data = dia < 10 ? "0"+String.valueOf(dia) : String.valueOf(dia) + "/" + 
+			String data = (dia < 10 ? "0"+String.valueOf(dia) : String.valueOf(dia)) + "/" + 
 		    (mes < 10 ? "0"+String.valueOf(mes+1) : String.valueOf(mes+1)) + "/" + String.valueOf(ano);
 			editDataAtividade.setText(data);	
 		}
