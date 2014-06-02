@@ -1,6 +1,7 @@
 package com.projetopiloto.plotadordehoras.util;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.chart.BarChart.Type;
@@ -25,12 +26,14 @@ public class BarGraph {
 	private XYMultipleSeriesRenderer grafico;
 	private ArrayList<CategorySeries> listaSeries;
 	private ArrayList<XYSeriesRenderer> listaRenderers;
+	private Random random;
 
 	public BarGraph() {
 		dataSet = new XYMultipleSeriesDataset();
 		grafico = new XYMultipleSeriesRenderer();
 		listaSeries = new ArrayList<CategorySeries>();
 		listaRenderers = new ArrayList<XYSeriesRenderer>();
+		random = new Random();
 	}
 
 	/**
@@ -73,7 +76,7 @@ public class BarGraph {
 		for (int i = 0; i < listaDeHoras.size(); i++) {
 			serie.add("Atividade " + (i + 1), listaDeHoras.get(i));
 		}
-		
+
 		getListaSeries().add(serie);
 		return serie;
 	}
@@ -91,6 +94,7 @@ public class BarGraph {
 		XYSeriesRenderer renderer = new XYSeriesRenderer();
 		renderer.setDisplayChartValues(displayValues);
 		renderer.setChartValuesSpacing(valuesSpacing);
+		renderer.setColor(random.nextInt());
 		listaRenderers.add(renderer);
 		return renderer;
 

@@ -46,11 +46,11 @@ public class CadastrarMinSoPraTeste extends Activity {
 				lista1.add(min2);
 				
 				ArrayList<Integer> lista2 = new ArrayList<Integer>();
-				lista1.add(min3);
-				lista1.add(min4); 
+				lista2.add(min3);
+				lista2.add(min4); 
 				
 				barra.criarSerie(lista1, "Universidade");
-				barra.criarSerie(lista1, "Lazer");
+				barra.criarSerie(lista2, "Lazer");
 				
 				barra.criarRenderer(true, 1);
 				barra.criarRenderer(true, 1);
