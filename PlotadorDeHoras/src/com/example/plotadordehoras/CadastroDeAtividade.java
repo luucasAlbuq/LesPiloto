@@ -1,7 +1,9 @@
 package com.example.plotadordehoras;
 
 import java.util.Calendar;
-
+import java.util.Date;
+import controller.ControllerAtividade;
+import model.Atividade;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -31,6 +33,7 @@ public class CadastroDeAtividade extends Activity{
 	private static final int DATE_DIALOG_ID = 0;
 	private String dataAtual;
 	private ArrayAdapter<Object> adapter;
+	private ControllerAtividade control = new ControllerAtividade();
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,7 @@ public class CadastroDeAtividade extends Activity{
         
         cadastrar.setOnClickListener(new OnClickListener() {
 			
+			@SuppressWarnings("deprecation")
 			@Override
 			public void onClick(View v) {
 				
@@ -80,6 +84,19 @@ public class CadastroDeAtividade extends Activity{
 					.setTitle("Data da Atividade Invalida")
 					.setMessage("Data da Atividade não pode ser vazio ou nula").show();
 				}else{
+					
+					String nome = nomeAtividade.getText().toString();
+					int tempo = Integer.parseInt(editTempoAtividade.getText().toString());
+					String data = editDataAtividade.getText().toString();
+					int dia = Integer.parseInt(data.substring(0, 2));
+					int mes = Integer.parseInt(data.substring(3, 5));
+					int ano = Integer.parseInt(data.substring(7, 10));
+					
+					Atividade atv = new Atividade(nome, tempo, new Date(ano, mes, dia));
+					control.add(atv);
+					
+					System.out.println(control.getKeys().size());
+			
 					new AlertDialog.Builder(CadastroDeAtividade.this).setTitle("Atividade Criada")
 					.setMessage("Atividade Criada com Sucesso").show();
 				}

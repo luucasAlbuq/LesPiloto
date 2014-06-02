@@ -1,8 +1,6 @@
 package model;
 import java.util.Date;
 
-import com.projetopiloto.plotadordehoras.excecoes.AtividadeException;
-
 /**
  * 
  * @author Pablo Herivelton
@@ -21,9 +19,8 @@ public class Atividade {
 	private Date data;
 
 	//Refactoring 1: A classe que instanciar Atividade deverá tratar esta exceção como um "popup" no GUI
-	public Atividade(String titulo, int tempoInvestido, Date data) throws AtividadeException{
+	public Atividade(String titulo, int tempoInvestido, Date data){
 		
-		verificaAtividade();
 		
 		setTitulo(titulo);
 		setTempo(tempoInvestido);
@@ -52,18 +49,6 @@ public class Atividade {
 
 	public void setTempo(int tempo) {
 		this.tempoInvestido = tempo;
-	}
-	
-	public void verificaAtividade() throws AtividadeException{
-		
-		if (tempoInvestido < 0) {
-			throw new AtividadeException("Tempo Investido inválido");
-		}else if(titulo.isEmpty() || titulo == null){
-			throw new AtividadeException("Título inválido");
-		}else if(data ==null){
-			throw new AtividadeException("Título inválido");
-		}
-
 	}
 	
 	public boolean equals(Atividade atv){

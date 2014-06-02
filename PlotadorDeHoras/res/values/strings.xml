@@ -11,6 +11,7 @@
     <string name="data_atividade">Data da Atividade</string>
     <string name="botao_cadastrar">Cadastrar</string>
     <string name="botao_voltar_atividade">Voltar</string>
+    <string name="botao_gerar_grafico">Grafico</string>
 
     <string-array name="sugestao_atividades">
         <item>Fumar</item>

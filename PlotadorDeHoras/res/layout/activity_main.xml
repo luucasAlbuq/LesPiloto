@@ -4,18 +4,11 @@
     android:layout_height="match_parent"
     tools:context="${packageName}.${activityClass}" >
 
-    <TextView
-        android:id="@+id/nomeAtividade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-
     <Button
         android:id="@+id/cadastroAtividade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/nomeAtividade"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="52dp"
         android:text="@string/Cadastro" />
@@ -25,23 +18,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/cadastroAtividade"
-        android:layout_below="@+id/nomeAtividade"
         android:layout_marginTop="28dp"
         android:text="@string/cadastro" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal" >
-
-        <Button
-            android:id="@+id/cadastroMin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="52dp"
-            android:text="Grafico" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/cadastroMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cadastroAtividade"
+        android:layout_alignBottom="@+id/cadastroAtividade"
+        android:layout_marginLeft="22dp"
+        android:layout_toRightOf="@+id/cadastro"
+        android:text="@string/botao_gerar_grafico" />
 
 </RelativeLayout>
