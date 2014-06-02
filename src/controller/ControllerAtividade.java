@@ -1,13 +1,14 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Set;
 
-import com.projetopiloto.plotadordehoras.excecoes.AtividadeException;
-
 import model.Atividade;
 import model.NodeAtividade;
+
+import com.projetopiloto.plotadordehoras.excecoes.AtividadeException;
 
 //Refactoring 1: esta classe deverá ser singleton.
 public class ControllerAtividade {
@@ -126,6 +127,14 @@ public class ControllerAtividade {
 		}
 
 		return atvs;
+	}
+	
+	public ArrayList<Atividade> getAtividadesSemanaAtual(Date dataHoje){
+		ArrayList<Atividade> atividadesSemana = new ArrayList<Atividade>();
+		
+		//TODO
+		
+		return atividadesSemana;
 	}
 
 }
