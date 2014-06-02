@@ -41,7 +41,6 @@ public class ControllerBD {
 		Atividade atv7 = new Atividade("Namorada", 120, new Date(2014, 5, 24) );
 		NodeAtividade node7 = new NodeAtividade(atv7);
 		node6.setNext(node7);
-
 		
 		return mapaTemp;
 		
