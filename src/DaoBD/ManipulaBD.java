@@ -43,16 +43,21 @@ public class ManipulaBD {
 	}
 	
 	public String getAtividadePorNome(String nomeAtividade){
-		 String query = "select * from " + CriaBD.TABLE_NAME + " where " 
-	     + CriaBD.NOME_ATIVIDADE + " = ?";
-		 Cursor cursor = database.rawQuery(query, null);
+//		 String query = "select * from " + CriaBD.TABLE_NAME + " where " 
+//	     + CriaBD.NOME_ATIVIDADE + " = ?";
+		 String[] arrayColunas = {"nome, tempo, data"};
+		 String[] arrayArgs = {CriaBD.NOME_ATIVIDADE, nomeAtividade};
+		 Cursor cursor = database.query(CriaBD.TABLE_NAME, arrayColunas, " ? = ?", arrayArgs, null, null, null);
+		 
 		 return cursor.toString();
 	}
 	
 	public String getAtividadesDaSemana(String data1, String data2){
-		 String query = "select * from " + CriaBD.TABLE_NAME + " where " 
-		 + CriaBD.NOME_ATIVIDADE + " between ? and ?";
-		 Cursor cursor = database.rawQuery(query, null);
+		
+		 String[] arrayColunas = {"nome, tempo, data"};
+		 String[] arrayArgs = {CriaBD.DATA_ATIVIDADE, data1, data2};
+		 Cursor cursor = database.query(CriaBD.TABLE_NAME, arrayColunas, " ? between ? and ? ", arrayArgs, null, null, null);
+
 		return cursor.toString();
 	}
 	
