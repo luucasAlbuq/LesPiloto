@@ -114,10 +114,7 @@ public class CadastroDeAtividade extends Activity{
 			
 			@Override
 			public void onClick(View v) {
-				
-				Intent telaAtividade = new Intent(CadastroDeAtividade.this, MainActivity.class);
-				CadastroDeAtividade.this.startActivity(telaAtividade);
-				
+				finish();
 			}
 		});
         
