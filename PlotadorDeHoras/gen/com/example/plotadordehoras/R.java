@@ -994,9 +994,9 @@ containing a value of this type.
         public static final int beginning=0x7f050011;
         public static final int botaoCadastrar=0x7f05004c;
         public static final int botaoVoltarAtividade=0x7f05004b;
-        public static final int cadastro=0x7f050047;
-        public static final int cadastroAtividade=0x7f050046;
-        public static final int cadastroMin=0x7f050048;
+        public static final int cadastro=0x7f050046;
+        public static final int cadastroAtividade=0x7f050045;
+        public static final int cadastroMin=0x7f050047;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
         public static final int dataAtividade=0x7f050049;
@@ -1029,7 +1029,7 @@ containing a value of this type.
         public static final int minAtividade4=0x7f050042;
         public static final int multiAutoCompleteNome=0x7f05004f;
         public static final int never=0x7f050009;
-        public static final int nomeAtividade=0x7f050045;
+        public static final int nomeAtividade=0x7f050048;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
         public static final int progress_circular=0x7f050018;
@@ -1157,6 +1157,7 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
         public static final int app_name=0x7f0a000d;
         public static final int botao_cadastrar=0x7f0a0015;
+        public static final int botao_gerar_grafico=0x7f0a0017;
         public static final int botao_voltar_atividade=0x7f0a0016;
         public static final int cadastro=0x7f0a0010;
         public static final int data_atividade=0x7f0a0014;
@@ -1164,7 +1165,7 @@ containing a value of this type.
         public static final int nome_atividade=0x7f0a0012;
         public static final int tela_cadastro_name=0x7f0a000e;
         public static final int tempo_atividade=0x7f0a0013;
-        public static final int title_activity_cadastrar_min_so_pra_teste=0x7f0a0017;
+        public static final int title_activity_cadastrar_min_so_pra_teste=0x7f0a0018;
     }
     public static final class style {
         /** 
