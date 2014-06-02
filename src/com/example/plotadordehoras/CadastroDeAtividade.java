@@ -1,14 +1,15 @@
 package com.example.plotadordehoras;
 
 import java.util.Calendar;
-import java.util.Date;
 
-import model.Atividade;
+import DaoBD.CriaBD;
+import DaoBD.ManipulaBD;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,7 +18,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import controller.ControllerAtividade;
 
 /**
  * 
@@ -34,7 +34,8 @@ public class CadastroDeAtividade extends Activity{
 	private static final int DATE_DIALOG_ID = 0;
 	private String dataAtual;
 	private ArrayAdapter<Object> adapter;
-	private ControllerAtividade control = new ControllerAtividade();
+	private SQLiteDatabase sql = null;
+	
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +48,13 @@ public class CadastroDeAtividade extends Activity{
         editDataAtividade = (EditText) findViewById(R.id.editDataAtividade);
         editTempoAtividade = (EditText) findViewById(R.id.editTempoAtividade);
         
-        nomeAtividade = (AutoCompleteTextView) findViewById(R.id.autoCompleteNome);
-        String[] atividades = control.getKeys().toArray(new String[0]);
-        adapter = new ArrayAdapter<Object> (this,android.R.layout.simple_list_item_1,atividades);
-        nomeAtividade.setAdapter(adapter);
+        atualizaAutoComplete();
+        
+        CriaBD bd = new CriaBD(getBaseContext());
+        sql = bd.getReadableDatabase();
+        if (!verificaTabela()){
+    		bd.onCreate(sql);
+    	}
         
         Calendar calendario = Calendar.getInstance();
         int dia = calendario.get(Calendar.DAY_OF_MONTH);
@@ -66,7 +70,6 @@ public class CadastroDeAtividade extends Activity{
         
         cadastrar.setOnClickListener(new OnClickListener() {
 			
-			@SuppressWarnings("deprecation")
 			@Override
 			public void onClick(View v) {
 				
@@ -89,16 +92,10 @@ public class CadastroDeAtividade extends Activity{
 					String nome = nomeAtividade.getText().toString();
 					int tempo = Integer.parseInt(editTempoAtividade.getText().toString());
 					String data = editDataAtividade.getText().toString();
-					int dia = Integer.parseInt(data.substring(0, 2));
-					int mes = Integer.parseInt(data.substring(3, 5));
-					int ano = Integer.parseInt(data.substring(6, 10));
-					
-					Atividade atv = new Atividade(nome, tempo, new Date(ano, mes, dia));
-					control.add(atv);
-					adapter.clear();
-					adapter.addAll(control.getKeys());
-					
-					System.out.println(control.getKeys().size());
+//			
+					ManipulaBD mdb = new ManipulaBD(getApplicationContext());
+					mdb.criaAtividade(nome, tempo, data);
+					atualizaAutoComplete();
 			
 					new AlertDialog.Builder(CadastroDeAtividade.this).setTitle("Atividade Criada")
 					.setMessage("Atividade Criada com Sucesso").show();
@@ -124,7 +121,6 @@ public class CadastroDeAtividade extends Activity{
         
         editDataAtividade.setOnClickListener(new OnClickListener() {
 			
-			@SuppressWarnings("deprecation")
 			@Override
 			public void onClick(View v) {
 				if (v == editDataAtividade){
@@ -160,5 +156,21 @@ public class CadastroDeAtividade extends Activity{
 			editDataAtividade.setText(data);	
 		}
 	};
+	
+	public boolean verificaTabela(){
+		SQLiteDatabase sql = null;
+		CriaBD bd = new CriaBD(getBaseContext());
+		sql = bd.getReadableDatabase();
+		Cursor cursor = sql.rawQuery("select * from atividade", null);
+		return cursor.getColumnCount() > 0;
+	}
+	
+	public void atualizaAutoComplete(){
+		ManipulaBD mdb = new ManipulaBD(getApplicationContext());
+		nomeAtividade = (AutoCompleteTextView) findViewById(R.id.autoCompleteNome);
+        String[] atividades = (String[]) mdb.getNomeAtividades().toArray(new String[0]);
+        adapter = new ArrayAdapter<Object> (this,android.R.layout.simple_list_item_1,atividades);
+        nomeAtividade.setAdapter(adapter);
+	}
 	
 }

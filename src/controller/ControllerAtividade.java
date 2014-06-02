@@ -1,13 +1,14 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Set;
 
-import com.projetopiloto.plotadordehoras.excecoes.AtividadeException;
-
 import model.Atividade;
 import model.NodeAtividade;
+
+import com.projetopiloto.plotadordehoras.excecoes.AtividadeException;
 
 //Refactoring 1: esta classe deverá ser singleton.
 public class ControllerAtividade {
@@ -23,7 +24,7 @@ public class ControllerAtividade {
 	private HashMap<String, NodeAtividade> carregaMapaKeyAtv() {
 		HashMap<String, NodeAtividade> mapaTemp = new HashMap<String, NodeAtividade>();
 		try {
-			//Pegando do BD simulado
+			// Pegando do BD simulado
 			mapaTemp = ControllerBD.getAtividadesData();
 		} catch (AtividadeException e) {
 			// TODO Auto-generated catch block
@@ -39,17 +40,33 @@ public class ControllerAtividade {
 		return mapaKeyAtividades.keySet();
 	}
 
-	//falta adaptar um insertion sort para inserir ordenado
+	// falta adaptar um insertion sort para inserir ordenado
 	public void add(Atividade atv) {
+		//se nao houver atividade do mesmo titulo cadastrado
 		if (!getKeys().contains(atv.getTitulo())) {
 			mapaKeyAtividades.put(atv.getTitulo(), new NodeAtividade(atv));
 		} else {
-			NodeAtividade value = mapaKeyAtividades.get(atv.getTitulo());
+			NodeAtividade node = mapaKeyAtividades.get(atv.getTitulo());
 			NodeAtividade newNode = new NodeAtividade(atv);
-			newNode.setNext(value);
-			mapaKeyAtividades.put(atv.getTitulo(), newNode);
-		}
+			NodeAtividade anterior = null;
+			
+			//se a atividade for mais recente que a que mais recente já adicionada antes
+			if (newNode.getAtividade().getData()
+					.after(node.getAtividade().getData())) {
+				mapaKeyAtividades.put(atv.getTitulo(), newNode);
+				newNode.setNext(node);
+			} else {
 
+				while (node != null && newNode.getAtividade().getData()
+						.before(node.getAtividade().getData())) {
+					anterior = node;
+					node = node.getNext();
+				}
+				
+				newNode.setNext(node);
+				anterior.setNext(newNode);
+			}
+		}
 	}
 
 	public void remove(Atividade atv) {
@@ -77,14 +94,14 @@ public class ControllerAtividade {
 	}
 
 	public int getTempoTotalAtv(String nomeAtv) throws AtividadeException {
-		if(!mapaKeyAtividades.keySet().contains(nomeAtv)){
+		if (!mapaKeyAtividades.keySet().contains(nomeAtv)) {
 			throw new AtividadeException("Não há atividades com este titulo.");
 		}
-		
+
 		int tempoTotal = 0;
 
 		NodeAtividade node = mapaKeyAtividades.get(nomeAtv);
-		
+
 		while (node != null) {
 			tempoTotal += node.getAtividade().getTempo();
 			node = node.getNext();
@@ -94,11 +111,12 @@ public class ControllerAtividade {
 	}
 
 	// retorna em ordem do mais recente para o mais antigo
-	public ArrayList<Atividade> getAtividades(String titulo) throws AtividadeException {
-		if(!mapaKeyAtividades.keySet().contains(titulo)){
+	public ArrayList<Atividade> getAtividades(String titulo)
+			throws AtividadeException {
+		if (!mapaKeyAtividades.keySet().contains(titulo)) {
 			throw new AtividadeException("Não há atividades com este titulo.");
 		}
-		
+
 		ArrayList<Atividade> atvs = new ArrayList<Atividade>();
 
 		NodeAtividade node = mapaKeyAtividades.get(titulo);
@@ -107,11 +125,16 @@ public class ControllerAtividade {
 			atvs.add(node.getAtividade());
 			node = node.getNext();
 		}
-		
 
 		return atvs;
 	}
 	
-	
+	public ArrayList<Atividade> getAtividadesSemanaAtual(Date dataHoje){
+		ArrayList<Atividade> atividadesSemana = new ArrayList<Atividade>();
+		
+		//TODO
+		
+		return atividadesSemana;
+	}
 
 }
