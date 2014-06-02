@@ -74,13 +74,13 @@
  	    
  	</EditText>
 
- 	<MultiAutoCompleteTextView
- 	    android:id="@+id/multiAutoCompleteNome"
+ 	<AutoCompleteTextView
+ 	    android:id="@+id/autoCompleteNome"
  	    android:layout_width="wrap_content"
  	    android:layout_height="wrap_content"
  	    android:layout_alignLeft="@+id/nomeAtividade"
  	    android:layout_below="@+id/nomeAtividade"
  	    android:ems="10" ><requestFocus />
- 	</MultiAutoCompleteTextView>
+ 	</AutoCompleteTextView>
  	
 </RelativeLayout>

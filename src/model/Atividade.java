@@ -21,7 +21,6 @@ public class Atividade {
 	//Refactoring 1: A classe que instanciar Atividade deverá tratar esta exceção como um "popup" no GUI
 	public Atividade(String titulo, int tempoInvestido, Date data){
 		
-		
 		setTitulo(titulo);
 		setTempo(tempoInvestido);
 		setData(data);

@@ -1,9 +1,5 @@
 package com.example.plotadordehoras;
 
-import java.util.ArrayList;
-
-import com.projetopiloto.plotadordehoras.util.BarGraph;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

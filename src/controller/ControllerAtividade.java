@@ -22,7 +22,13 @@ public class ControllerAtividade {
 	// Refactoring 2: Carregar do BD ao iniciar o app.
 	private HashMap<String, NodeAtividade> carregaMapaKeyAtv() {
 		HashMap<String, NodeAtividade> mapaTemp = new HashMap<String, NodeAtividade>();
-
+		try {
+			//Pegando do BD simulado
+			mapaTemp = ControllerBD.getAtividadesData();
+		} catch (AtividadeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// carregar atividades do BD e salvar em mapaTemp
 
 		return mapaTemp;
