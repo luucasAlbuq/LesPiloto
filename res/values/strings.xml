@@ -17,6 +17,8 @@
     <string name="semana_atividade">Semana</string>
     <string name="gera_relatorio_atividade_semana">Gera Relatorio</string>
     <string name="gera_relatorio">Relatorio de Atividades</string>
+    <string name="gera_historico">Historico de Atividades</string>
+    <string name="botao_voltar_relatorio">Voltar</string>
     <string name="title_activity_cadastrar_min_so_pra_teste">CadastrarMinSoPraTeste</string>
     <string name="title_activity_relatorio_semana">Relatorio Semanal de Atividades</string>
     
