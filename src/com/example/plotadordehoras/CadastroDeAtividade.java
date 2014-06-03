@@ -11,6 +11,7 @@ import android.app.Dialog;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -99,6 +100,7 @@ public class CadastroDeAtividade extends Activity{
 			
 					new AlertDialog.Builder(CadastroDeAtividade.this).setTitle("Atividade Criada")
 					.setMessage("Atividade Criada com Sucesso").show();
+					Log.i("Debug","Tempo de brbr: " +  mdb.getAtividadePorNome("brbr").getTempo());
 				}
 			}
 		});
