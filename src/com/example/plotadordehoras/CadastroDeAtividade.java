@@ -65,7 +65,7 @@ public class CadastroDeAtividade extends Activity{
         editDataAtividade.setText(dataAtual);
         
         /**
-         * Ação executada ao clicar no Botão Cadastrar
+         * Aï¿½ï¿½o executada ao clicar no Botï¿½o Cadastrar
          * Tratada as excecoes para cada campo da tela
          */
         
@@ -77,17 +77,17 @@ public class CadastroDeAtividade extends Activity{
 				if ( nomeAtividade.getText().toString() == null || nomeAtividade.getText().toString().isEmpty()){
 					new AlertDialog.Builder(CadastroDeAtividade.this)
 					.setTitle("Nome da Atividade Invalida")
-					.setMessage("Nome da Atividade não pode ser vazio ou nula").show();
+					.setMessage("Nome da Atividade nï¿½o pode ser vazio ou nula").show();
 				}else if (editTempoAtividade.getText().toString() == null || 
 						editTempoAtividade.getText().toString().isEmpty() ){
 					new AlertDialog.Builder(CadastroDeAtividade.this)
 					.setTitle("Tempo da Atividade Invalida")
-					.setMessage("Tempo da Atividade não pode ser vazia ou nula").show();
+					.setMessage("Tempo da Atividade nï¿½o pode ser vazia ou nula").show();
 				}else if (editDataAtividade.getText().toString() == null || 
 						editDataAtividade.getText().toString().isEmpty()){
 					new AlertDialog.Builder(CadastroDeAtividade.this)
 					.setTitle("Data da Atividade Invalida")
-					.setMessage("Data da Atividade não pode ser vazio ou nula").show();
+					.setMessage("Data da Atividade nï¿½o pode ser vazio ou nula").show();
 				}else{
 					
 					String nome = nomeAtividade.getText().toString();
@@ -100,13 +100,12 @@ public class CadastroDeAtividade extends Activity{
 			
 					new AlertDialog.Builder(CadastroDeAtividade.this).setTitle("Atividade Criada")
 					.setMessage("Atividade Criada com Sucesso").show();
-					Log.i("Debug","Tempo de brbr: " +  mdb.getAtividadePorNome("brbr").getTempo());
 				}
 			}
 		});
         
         /**
-         * Ação executada ao clica no botão Voltar
+         * Aï¿½ï¿½o executada ao clica no botï¿½o Voltar
          */
         
         voltar.setOnClickListener(new View.OnClickListener() {
@@ -118,7 +117,7 @@ public class CadastroDeAtividade extends Activity{
 		});
         
         /**
-         * Exibe o Calendário para o usuário escolher a data
+         * Exibe o Calendï¿½rio para o usuï¿½rio escolher a data
          */
         
         editDataAtividade.setOnClickListener(new OnClickListener() {
