@@ -28,6 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
         <activity
             android:name="com.example.plotadordehoras.CadastroDeAtividade"
             android:label="@string/tela_cadastro_name" >
@@ -37,10 +38,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
         <activity android:name="org.achartengine.GraphicalActivity" />
+        
         <activity
             android:name="com.example.plotadordehoras.CadastrarMinSoPraTeste"
             android:label="@string/title_activity_cadastrar_min_so_pra_teste" >
+        </activity>
+        
+        <activity
+            android:name="com.example.plotadordehoras.AtividadesDaSemana"
+            android:label="@string/title_activity_relatorio_semana" >
         </activity>
     </application>
 

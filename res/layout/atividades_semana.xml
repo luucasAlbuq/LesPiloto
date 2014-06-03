@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}" >
+
+
+    <TextView
+        android:id="@+id/mesAtividade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/semanaMes"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="25dp"
+        android:text="@string/mes_atividade" />
+
+    <TextView
+        android:id="@+id/semanaAtividade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/semanaMes"
+        android:layout_alignLeft="@+id/mesAtividade"
+        android:text="@string/semana_atividade" />
+    
+     <Spinner
+        android:id="@+id/semanaMes"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/mesesAno"
+        android:layout_below="@+id/mesesAno"
+        android:layout_marginTop="41dp" />
+
+    <Spinner
+        android:id="@+id/mesesAno"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/TextAtividadeSemana"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="35dp"
+        android:layout_toRightOf="@+id/semanaAtividade" />
+
+    <Button
+        android:id="@+id/geraRelatorioAtividade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/semanaAtividade"
+        android:layout_below="@+id/semanaAtividade"
+        android:layout_marginTop="126dp"
+        android:text="@string/gera_relatorio_atividade_semana" />
+
+    <TextView
+        android:id="@+id/TextAtividadeSemana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="34dp"
+        android:layout_toRightOf="@+id/geraRelatorioAtividade"
+        android:text="@string/atividade_semana" />
+    
+</RelativeLayout>
