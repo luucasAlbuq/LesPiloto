@@ -58,6 +58,7 @@ public class ManipulaBD {
 	}
 
 	public Atividade getAtividadePorNome(String nomeAtividade){
+		database = criaBD.getReadableDatabase(); 
 		//		 String query = "select * from " + CriaBD.TABLE_NAME + " where " 
 		//	     + CriaBD.NOME_ATIVIDADE + " = ?";
 		String[] arrayColunas = {CriaBD.NOME_ATIVIDADE,
