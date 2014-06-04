@@ -3,6 +3,7 @@ package com.projetopiloto.plotadordehoras.util;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import android.content.Context;
@@ -42,6 +43,7 @@ public  class GerarRelatorioDaSemana {
 	}
 
 	public List<Atividade> getAtividadesOrdenadasDecrescente() {
+		Collections.sort(atividadesOrdenadasDecrescente, new AtividadeComparator());
 		return atividadesOrdenadasDecrescente;
 	}
 
@@ -66,6 +68,14 @@ public  class GerarRelatorioDaSemana {
 		}
 
 		return temp;
+	}
+	
+	private static class AtividadeComparator implements Comparator<Atividade> {
+		public int compare(Atividade item1, Atividade item2) {
+			int n1 = item1.getTempo();
+			int n2 = item2.getTempo();
+			return n1 < n2 ? +1 : n1 > n2 ? -1 : 0;
+		}
 	}
 
 }

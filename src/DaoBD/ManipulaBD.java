@@ -84,6 +84,7 @@ public class ManipulaBD {
 	}
 
 	public List<Atividade> getAtividadesDaSemana(String dataInicio, String dataFim){
+		database = criaBD.getReadableDatabase(); 
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 		SimpleDateFormat dbFormat = new SimpleDateFormat("yyyy-MM-dd");
 		try {
