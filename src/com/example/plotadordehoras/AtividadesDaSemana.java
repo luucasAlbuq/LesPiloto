@@ -50,7 +50,8 @@ public class AtividadesDaSemana extends Activity{
 			@Override
 			public void onClick(View v) {
 				
-				//Lucas põe o código aqui....
+				Intent telaRelatorioDaSemana = new Intent(AtividadesDaSemana.this, RelatorioDaSemana.class);
+				AtividadesDaSemana.this.startActivity(telaRelatorioDaSemana);
 			}
 		});
 		

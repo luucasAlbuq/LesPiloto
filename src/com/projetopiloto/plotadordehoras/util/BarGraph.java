@@ -3,6 +3,8 @@ package com.projetopiloto.plotadordehoras.util;
 import java.util.ArrayList;
 import java.util.Random;
 
+import model.Atividade;
+
 import org.achartengine.ChartFactory;
 import org.achartengine.chart.BarChart.Type;
 import org.achartengine.model.CategorySeries;
@@ -27,6 +29,7 @@ public class BarGraph {
 	private ArrayList<CategorySeries> listaSeries;
 	private ArrayList<XYSeriesRenderer> listaRenderers;
 	private Random random;
+	private int contador;
 
 	public BarGraph() {
 		dataSet = new XYMultipleSeriesDataset();
@@ -34,6 +37,7 @@ public class BarGraph {
 		listaSeries = new ArrayList<CategorySeries>();
 		listaRenderers = new ArrayList<XYSeriesRenderer>();
 		random = new Random();
+		contador = 0;
 	}
 
 	/**
@@ -79,6 +83,26 @@ public class BarGraph {
 
 		getListaSeries().add(serie);
 		return serie;
+	}
+	
+	/**
+	 * Cria e retorna uma serie de inteiros, que guarda os valores que serão
+	 * expressos no gráfiico.
+	 * 
+	 * @param atividade
+	 * @return
+	 */
+	public CategorySeries criaSerie(Atividade atividade){
+		CategorySeries serei = null;
+		
+		if(atividade!=null){
+			serei = new CategorySeries(atividade.getTitulo());
+			serei.add("Atividade "+contador,atividade.getTempo());
+		}
+		contador++;
+		
+		getListaSeries().add(serei);
+		return serei;
 	}
 
 	/**

@@ -15,7 +15,7 @@ import com.projetopiloto.plotadordehoras.excecoes.AtividadeException;
  *
  */
 
-public class Atividade {
+public class Atividade  implements Comparable<Atividade> {
 	
 	private String nome;
 	private int tempo;
@@ -59,6 +59,17 @@ public class Atividade {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public int compareTo(Atividade another) {
+		if(this.tempo<another.getTempo()){
+			return -1;
+		}if(this.tempo>another.getTempo()){
+			return 1;
+		}
+		
+		return 0;
 	}
 	
 }

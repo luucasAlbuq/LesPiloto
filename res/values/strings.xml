@@ -22,6 +22,7 @@
     <string name="title_activity_cadastrar_min_so_pra_teste">CadastrarMinSoPraTeste</string>
     <string name="title_activity_relatorio_semana">Relatorio Semanal de Atividades</string>
     
+
     <string-array name="meses_ano">
         <item>Janeiro</item>
         <item>Fevereiro</item>
@@ -36,12 +37,13 @@
         <item>Novembro</item>
         <item>Dezembro</item>
     </string-array>
-    
     <string-array name="semanas_ano">
         <item>1</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
     </string-array>
+
+    <string name="title_activity_relatorio_da_semana">RelatorioDaSemana</string>
 
 </resources>
