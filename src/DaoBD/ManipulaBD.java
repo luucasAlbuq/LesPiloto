@@ -5,15 +5,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import model.Atividade;
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQueryBuilder;
-import android.util.Log;
 
+@SuppressLint("SimpleDateFormat")
 public class ManipulaBD {
 
 	private SQLiteDatabase database;
@@ -108,7 +107,14 @@ public class ManipulaBD {
 				data = dbFormat.parse(cursor.getString(cursor.getColumnIndex(CriaBD.DATA_ATIVIDADE)));
 			} catch (ParseException e) {}
 			Atividade atv = new Atividade(nome, tempo, data);
-			lista.add(atv);
+			if (lista.contains(atv)){
+				Atividade temp = lista.get(atv.getIndexAtividade(lista, atv));
+				int tempoLocal = temp.getTempo();
+				temp.setTempo(atv.getTempo()+tempoLocal);
+			}else{
+				lista.add(atv);
+			}
+			
 		}
 
 		return lista;

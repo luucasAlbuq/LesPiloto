@@ -1,12 +1,8 @@
 package com.example.plotadordehoras;
 
 import java.util.ArrayList;
-
 import model.Atividade;
-
 import com.projetopiloto.plotadordehoras.util.GerarRelatorioDaSemana;
-
-import android.app.Activity;
 import android.app.TabActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +12,7 @@ import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabContentFactory;
 
+@SuppressWarnings("deprecation")
 public class Historico extends TabActivity implements OnTabChangeListener {
 
 	private ListView semanaAtualListView;
@@ -24,6 +21,7 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 	private GerarRelatorioDaSemana gerarRelatorio;
 	private TabHost tabHost;
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

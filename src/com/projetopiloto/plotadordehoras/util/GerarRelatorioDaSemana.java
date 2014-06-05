@@ -1,12 +1,9 @@
 package com.projetopiloto.plotadordehoras.util;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
 import android.content.Context;
 import model.Atividade;
 import DaoBD.ManipulaBD;
@@ -74,7 +71,7 @@ public class GerarRelatorioDaSemana {
 	public List<Integer> getTempoAtivades() {
 		ArrayList<Integer> temp = new ArrayList<Integer>();
 		for (Atividade atividade : getAtividadesOrdenadasDecrescente()) {
-			temp.add(new Integer(atividade.getTempo()));
+			temp.add(Integer.valueOf(atividade.getTempo()));
 		}
 
 		return temp;

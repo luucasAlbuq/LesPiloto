@@ -19,8 +19,15 @@
     <string name="gera_relatorio">Relatorio de Atividades</string>
     <string name="gera_historico">Historico de Atividades</string>
     <string name="botao_voltar_relatorio">Voltar</string>
+    <string name="gerenciador_atividade">Gerenciador de Atividades</string>
+    <string name="atividade_da_semana">Atividades da Semana</string>
+    <string name="minutos">Minutos</string>
+    <string name="atividade">Atividade</string>
+    <string name="porcentagem">%</string>
     <string name="title_activity_cadastrar_min_so_pra_teste">CadastrarMinSoPraTeste</string>
     <string name="title_activity_relatorio_semana">Relatorio Semanal de Atividades</string>
+    <string name="title_activity_relatorio_da_semana">RelatorioDaSemana</string>
+    <string name="title_activity_historico">Historico</string>
 
     <string-array name="meses_ano">
         <item>Janeiro</item>
@@ -36,14 +43,12 @@
         <item>Novembro</item>
         <item>Dezembro</item>
     </string-array>
+    
     <string-array name="semanas_ano">
         <item>1</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
     </string-array>
-
-    <string name="title_activity_relatorio_da_semana">RelatorioDaSemana</string>
-    <string name="title_activity_historico">Historico</string>
 
 </resources>

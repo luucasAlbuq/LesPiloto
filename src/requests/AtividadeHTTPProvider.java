@@ -1,9 +1,7 @@
 package requests;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 import model.Atividade;
 
 public class AtividadeHTTPProvider {

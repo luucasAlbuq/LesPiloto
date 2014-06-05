@@ -12,9 +12,9 @@
         android:layout_marginBottom="5dip"
         android:background="#ffb0b6"
         android:gravity="center_vertical|center_horizontal"
-        android:text="Atividades da Semana"
+        android:text="@string/atividade_da_semana"
         android:textColor="#b3000d"
-        android:textSize="26dip"
+        android:textSize="26sp"
         android:textStyle="bold"
         android:typeface="sans" />
 
@@ -29,9 +29,9 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical|left"
             android:paddingLeft="20dip"
-            android:text="Minutos"
+            android:text="@string/minutos"
             android:textColor="#FFFFFF"
-            android:textSize="16dip"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:typeface="serif" >
         </TextView>
@@ -42,9 +42,9 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/tv_1"
             android:gravity="center_horizontal"
-            android:text="Atividade"
+            android:text="@string/atividade"
             android:textColor="#FFFFFF"
-            android:textSize="16dip"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:typeface="serif" >
         </TextView>
@@ -55,9 +55,9 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/tv_2"
             android:gravity="center_vertical"
-            android:text="%"
+            android:text="@string/porcentagem"
             android:textColor="#FFFFFF"
-            android:textSize="16dip"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:typeface="serif" >
         </TextView>
@@ -81,7 +81,7 @@
             android:id="@+id/botaoGerarGrafico"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gerar Gráfico" 
+            android:text="@string/botao_gerar_grafico" 
             android:layout_marginLeft="7dp"
         	android:layout_marginTop="25dp"
         	android:gravity="center"
@@ -92,7 +92,7 @@
             android:id="@+id/botaoVooltarRelatorio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Voltar" 
+            android:text="@string/botao_voltar_atividade" 
             android:layout_marginLeft="7dp"
         	android:layout_marginTop="25dp"
         	android:gravity="center"

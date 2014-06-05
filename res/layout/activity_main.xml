@@ -11,8 +11,8 @@
         android:layout_marginLeft="32dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="Gerenciador de Atividades"
-        android:textSize="20dip"
+        android:text="@string/gerenciador_atividade"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <Button
@@ -23,17 +23,6 @@
         android:layout_marginTop="20dp"
         android:height="45sp"
         android:text="@string/Cadastro"
-        android:width="250sp" />
-
-    <Button
-        android:id="@+id/cadastroMin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:height="45sp"
-        android:text="@string/botao_gerar_grafico"
         android:width="250sp" />
 
     <Button

@@ -4,14 +4,13 @@ import java.util.Calendar;
 
 import DaoBD.CriaBD;
 import DaoBD.ManipulaBD;
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -39,6 +38,7 @@ public class CadastroDeAtividade extends Activity{
 	private SQLiteDatabase sql = null;
 	
 	
+	@SuppressLint("ShowToast")
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +97,10 @@ public class CadastroDeAtividade extends Activity{
 					mdb.criaAtividade(nome, tempo, data);
 					atualizaAutoComplete();
 					
+					nomeAtividade.setText("");
+					editTempoAtividade.setText("");
+					nomeAtividade.requestFocus();
+					
 					alertaSucesso.show();
 					
 				}
@@ -121,6 +125,7 @@ public class CadastroDeAtividade extends Activity{
         
         editDataAtividade.setOnClickListener(new OnClickListener() {
 			
+			@SuppressWarnings("deprecation")
 			@Override
 			public void onClick(View v) {
 				if (v == editDataAtividade){

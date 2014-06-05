@@ -8,9 +8,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
-	
-	int[] firstData = { 23, 145, 67, 78, 86, 190, 46, 78, 167, 164 };
-	int[] secondData = { 83, 45, 168, 138, 67, 150, 64, 87, 144, 188 };
 
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,22 +25,6 @@ public class MainActivity extends Activity {
 				
 			}
 		});
-        
-       
-		//////////////////////////////////////////////////////////////
-		
-		Button grafico = (Button) findViewById(R.id.cadastroMin);
-		
-		grafico.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				Intent telaGrafico = new Intent(MainActivity.this, CadastrarMinSoPraTeste.class);
-				MainActivity.this.startActivity(telaGrafico);
-				
-			}
-		});
-		
 		
 		Button relatorio = (Button) findViewById(R.id.botaoRelatorioAtividade);
 		relatorio.setOnClickListener(new OnClickListener() {

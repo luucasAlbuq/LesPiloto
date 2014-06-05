@@ -1,10 +1,5 @@
 package com.example.plotadordehoras;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import model.Atividade;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -17,16 +12,22 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.projetopiloto.plotadordehoras.util.CountriesList;
 import com.projetopiloto.plotadordehoras.util.GerarRelatorioDaSemana;
 import com.projetopiloto.plotadordehoras.util.PieGraph;
+
+/**
+ * 
+ * @author Lucas
+ *
+ * Classe que Gera o Relatorio Semanal das Atividades do Usuario
+ */
 
 public class RelatorioDaSemana extends Activity {
 
 	private ListView listView;
 	private static GerarRelatorioDaSemana gerarRelatorio;
 	private Button gerarGrafico;
+	private Button voltarRelatorio;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,8 @@ public class RelatorioDaSemana extends Activity {
 		listView = (ListView) findViewById(R.id.lv_country);
 		listView.setAdapter(new EfficientAdapter(this, getGerarRelatorio()
 				.getNomeAtivades().size()));
+
+		voltarRelatorio = (Button) findViewById(R.id.botaoVooltarRelatorio);
 
 		gerarGrafico = (Button) findViewById(R.id.botaoGerarGrafico);
 		gerarGrafico.setOnClickListener(new OnClickListener() {
@@ -53,8 +56,19 @@ public class RelatorioDaSemana extends Activity {
 
 			}
 		});
-		
-		
+
+		voltarRelatorio.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				Intent telaAnterior = new Intent(RelatorioDaSemana.this,
+						AtividadesDaSemana.class);
+				RelatorioDaSemana.this.startActivity(telaAnterior);
+
+			}
+		});
+
 	}
 
 	private static class EfficientAdapter extends BaseAdapter {
@@ -87,8 +101,6 @@ public class RelatorioDaSemana extends Activity {
 			ViewColuna coluna;
 			System.out.println(position);
 
-			GerarRelatorioDaSemana rela = gerarRelatorio;
-
 			if (convertView == null) {
 				convertView = layoutInflater
 						.inflate(R.layout.two_col_row, null);
@@ -112,7 +124,8 @@ public class RelatorioDaSemana extends Activity {
 					.valueOf(getGerarRelatorio().getNomeAtivades()
 							.get(position)));
 			coluna.colunaPorcentagemTextView.setText(String
-					.valueOf(getGerarRelatorio().porcentagemDecrescente().get(position)));
+					.valueOf(getGerarRelatorio().porcentagemDecrescente().get(
+							position)));
 
 			return convertView;
 		}
@@ -130,6 +143,6 @@ public class RelatorioDaSemana extends Activity {
 	}
 
 	public void setGerarRelatorio(GerarRelatorioDaSemana gerarRelatorio) {
-		this.gerarRelatorio = gerarRelatorio;
+		RelatorioDaSemana.gerarRelatorio = gerarRelatorio;
 	}
 }

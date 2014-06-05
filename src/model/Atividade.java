@@ -1,5 +1,6 @@
 package model;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 
@@ -50,11 +51,22 @@ public class Atividade {
 		this.tempoInvestido = tempo;
 	}
 	
-	public boolean equals(Atividade atv){
-		if(atv.getTitulo().equals(this.titulo) && atv.getTempo() == this.tempoInvestido && atv.getData().equals(this.data)){
-			return true;
+	@Override
+	public boolean equals(Object obj){
+		if(obj instanceof Atividade){
+			Atividade atv = (Atividade) obj;
+			return atv.getTitulo().equals(this.titulo);
 		}
 		return false;
+	}
+	
+	public int getIndexAtividade(List<Atividade> atividade, Atividade atv){
+		for (int i = 0; i < atividade.size(); i++) {
+			if (atividade.get(i).equals(atv)){
+				return i;
+			}
+		}
+		return -1;
 	}
 	
 }

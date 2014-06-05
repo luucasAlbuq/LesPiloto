@@ -11,6 +11,7 @@ import model.NodeAtividade;
 public class ControllerBD {
 	
 	
+	@SuppressWarnings("deprecation")
 	public static HashMap<String, NodeAtividade> getAtividadesData() throws AtividadeException{
 		HashMap<String, NodeAtividade> mapaTemp = new HashMap<String, NodeAtividade>();
 	

@@ -1,20 +1,14 @@
 package com.projetopiloto.plotadordehoras.util;
 
-
-
 import java.util.List;
 import java.util.Random;
-
 import model.Atividade;
-
 import org.achartengine.ChartFactory;
 import org.achartengine.model.CategorySeries;
 import org.achartengine.renderer.DefaultRenderer;
 import org.achartengine.renderer.SimpleSeriesRenderer;
-
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 
 public class PieGraph {
 
