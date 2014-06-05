@@ -1,44 +1,58 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${packageName}.${activityClass}" >
-
-    <Button
-        android:id="@+id/cadastroAtividade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="52dp"
-        android:text="@string/Cadastro" />
+    android:orientation="vertical" >
 
     <TextView
         android:id="@+id/cadastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/cadastroAtividade"
-        android:layout_marginTop="28dp"
-        android:text="@string/cadastro" />
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Gerenciador de Atividades"
+        android:textSize="20dip"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/cadastroAtividade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="20dp"
+        android:height="45sp"
+        android:text="@string/Cadastro"
+        android:width="250sp" />
 
     <Button
         android:id="@+id/cadastroMin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/cadastroAtividade"
-        android:layout_alignBottom="@+id/cadastroAtividade"
-        android:layout_marginLeft="22dp"
-        android:layout_toRightOf="@+id/cadastro"
-        android:text="@string/botao_gerar_grafico" />
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:height="45sp"
+        android:text="@string/botao_gerar_grafico"
+        android:width="250sp" />
 
     <Button
         android:id="@+id/botaoRelatorioAtividade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/cadastroMin"
-        android:layout_alignBottom="@+id/cadastroMin"
-        android:layout_marginLeft="34dp"
-        android:layout_toRightOf="@+id/cadastroMin"
-        android:text="@string/gera_relatorio" />
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:height="45sp"
+        android:text="@string/gera_relatorio"
+        android:width="250sp" />
 
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="125dp"
+        android:layout_height="110dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/ic_launcher" />
+
+</LinearLayout>

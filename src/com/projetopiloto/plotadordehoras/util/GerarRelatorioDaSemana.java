@@ -92,7 +92,7 @@ public class GerarRelatorioDaSemana {
 		ArrayList<String> porcentagens = new ArrayList<String>();
 		double totalTempo = getTotalTempo();
 		for (Atividade atv : getAtividadesOrdenadasDecrescente()) {
-			double porcentagemAtv = atv.getTempo() / totalTempo;
+			double porcentagemAtv = (atv.getTempo() / totalTempo)*100;
 			porcentagens.add(String.format("%.2f", porcentagemAtv)+"%");
 		}
 		return porcentagens;

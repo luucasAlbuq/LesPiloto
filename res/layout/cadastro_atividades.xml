@@ -24,21 +24,22 @@
 
     <Button
         android:id="@+id/botaoVoltarAtividade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/botaoCadastrar"
-        android:layout_alignBottom="@+id/botaoCadastrar"
-        android:layout_marginLeft="26dp"
-        android:layout_toRightOf="@+id/tempoAtividade"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="250dp"
+        android:gravity="center"
         android:text="@string/botao_voltar_atividade" />
 
     <Button
         android:id="@+id/botaoCadastrar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/editTempoAtividade"
-        android:layout_below="@+id/dataAtividade"
-        android:layout_marginTop="76dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="250dp"
+        android:gravity="center"
         android:text="@string/botao_cadastrar" />
 
  	<EditText

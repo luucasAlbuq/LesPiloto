@@ -50,6 +50,10 @@
             android:name="com.example.plotadordehoras.RelatorioDaSemana"
             android:label="@string/title_activity_relatorio_da_semana" >
         </activity>
+        <activity
+            android:name="com.example.plotadordehoras.Historico"
+            android:label="@string/title_activity_historico" >
+        </activity>
     </application>
 
 </manifest>

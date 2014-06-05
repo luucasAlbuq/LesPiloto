@@ -53,6 +53,8 @@ public class RelatorioDaSemana extends Activity {
 
 			}
 		});
+		
+		
 	}
 
 	private static class EfficientAdapter extends BaseAdapter {
@@ -110,7 +112,7 @@ public class RelatorioDaSemana extends Activity {
 					.valueOf(getGerarRelatorio().getNomeAtivades()
 							.get(position)));
 			coluna.colunaPorcentagemTextView.setText(String
-					.valueOf(getGerarRelatorio().porcentagemDecrescente()));
+					.valueOf(getGerarRelatorio().porcentagemDecrescente().get(position)));
 
 			return convertView;
 		}

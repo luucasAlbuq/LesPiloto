@@ -30,48 +30,44 @@
         android:layout_below="@+id/mesesAno"
         android:layout_marginTop="41dp" />
 
+    <Button
+        android:id="@+id/botaoGeraRelatorioAtividade"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="325dp"
+        android:text="@string/gera_relatorio_atividade_semana" />
+
+    <Button
+        android:id="@+id/botaoVoltar"
+        android:layout_width="195dp"
+        android:layout_height="55dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="390dp"
+        android:text="@string/botao_voltar_relatorio" />
+
+    <Button
+        android:id="@+id/botaoHistoricoComparativo"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="260dp"
+        android:text="@string/gera_historico" />
+
+    <TextView
+        android:id="@+id/TextAtividadeSemana"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:text="@string/atividade_semana" />
+
     <Spinner
         android:id="@+id/mesesAno"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/TextAtividadeSemana"
-        android:layout_marginLeft="33dp"
-        android:layout_marginTop="35dp"
-        android:layout_toRightOf="@+id/semanaAtividade" />
-
-    <Button
-        android:id="@+id/botaoGeraRelatorioAtividade"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_alignLeft="@+id/semanaAtividade"
-        android:layout_below="@+id/semanaAtividade"
-        android:layout_marginTop="126dp"
-        android:text="@string/gera_relatorio_atividade_semana" />
-
-    <TextView
-        android:id="@+id/TextAtividadeSemana"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/mesesAno"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="36dp"
-        android:text="@string/atividade_semana" />
-
-    <Button
-        android:id="@+id/botaoHistoricoComparativo"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_alignTop="@+id/botaoGeraRelatorioAtividade"
-        android:layout_toRightOf="@+id/semanaMes"
-        android:text="@string/gera_historico" />
-
-    <Button
-        android:id="@+id/botaoVoltar"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_alignLeft="@+id/botaoGeraRelatorioAtividade"
-        android:layout_below="@+id/botaoGeraRelatorioAtividade"
-        android:layout_marginTop="30dp"
-        android:text="@string/botao_voltar_relatorio" />
+        android:layout_alignLeft="@+id/TextAtividadeSemana"
+        android:layout_below="@+id/TextAtividadeSemana" />
     
 </RelativeLayout>

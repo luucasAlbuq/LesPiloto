@@ -63,8 +63,8 @@ public class AtividadesDaSemana extends Activity{
 			
 			@Override
 			public void onClick(View arg0) {
-				
-				//Lucas Põe o Código aqui
+				Intent telaHistorico = new Intent(AtividadesDaSemana.this, Historico.class);
+				AtividadesDaSemana.this.startActivity(telaHistorico);
 				
 			}
 		});

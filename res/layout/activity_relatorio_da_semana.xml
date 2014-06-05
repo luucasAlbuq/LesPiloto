@@ -75,13 +75,29 @@
         android:layout_height="41dp"
         android:layout_weight="0.24"
         android:background="#ffccd0"
-        android:orientation="vertical" >
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/botaoGerarGrafico"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gerar Gráfico" />
+            android:text="Gerar Gráfico" 
+            android:layout_marginLeft="7dp"
+        	android:layout_marginTop="25dp"
+        	android:gravity="center"
+        	android:height="25sp"
+        	android:width="150sp"/>
+        
+        <Button
+            android:id="@+id/botaoVooltarRelatorio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voltar" 
+            android:layout_marginLeft="7dp"
+        	android:layout_marginTop="25dp"
+        	android:gravity="center"
+        	android:height="25sp"
+        	android:width="150sp"/>
 
     </LinearLayout>
 
