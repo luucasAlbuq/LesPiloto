@@ -19,6 +19,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * 
@@ -68,26 +69,24 @@ public class CadastroDeAtividade extends Activity{
          * Aï¿½ï¿½o executada ao clicar no Botï¿½o Cadastrar
          * Tratada as excecoes para cada campo da tela
          */
-        
+        final Toast alertaSucesso = Toast.makeText(this, "Atividade Criada com Sucesso", Toast.LENGTH_LONG);
+        final Toast nomeAtividadeInvalido = Toast.makeText(this, "Nome da Atividade não pode ser vazio ou nula", Toast.LENGTH_LONG);
+        final Toast atividadeTempoInvalido = Toast.makeText(this, "Tempo da Atividade não pode ser vazia ou nula", Toast.LENGTH_LONG);
+        final Toast dataInvalido = Toast.makeText(this, "Tempo da Atividade não pode ser vazia ou nula", Toast.LENGTH_LONG);
         cadastrar.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				
 				if ( nomeAtividade.getText().toString() == null || nomeAtividade.getText().toString().isEmpty()){
-					new AlertDialog.Builder(CadastroDeAtividade.this)
-					.setTitle("Nome da Atividade Invalida")
-					.setMessage("Nome da Atividade nï¿½o pode ser vazio ou nula").show();
+					nomeAtividadeInvalido.show();
 				}else if (editTempoAtividade.getText().toString() == null || 
 						editTempoAtividade.getText().toString().isEmpty() ){
-					new AlertDialog.Builder(CadastroDeAtividade.this)
-					.setTitle("Tempo da Atividade Invalida")
-					.setMessage("Tempo da Atividade nï¿½o pode ser vazia ou nula").show();
+					atividadeTempoInvalido.show();
+					
 				}else if (editDataAtividade.getText().toString() == null || 
 						editDataAtividade.getText().toString().isEmpty()){
-					new AlertDialog.Builder(CadastroDeAtividade.this)
-					.setTitle("Data da Atividade Invalida")
-					.setMessage("Data da Atividade nï¿½o pode ser vazio ou nula").show();
+					dataInvalido.show();
 				}else{
 					
 					String nome = nomeAtividade.getText().toString();
@@ -97,9 +96,9 @@ public class CadastroDeAtividade extends Activity{
 					ManipulaBD mdb = new ManipulaBD(getApplicationContext());
 					mdb.criaAtividade(nome, tempo, data);
 					atualizaAutoComplete();
-			
-					new AlertDialog.Builder(CadastroDeAtividade.this).setTitle("Atividade Criada")
-					.setMessage("Atividade Criada com Sucesso").show();
+					
+					alertaSucesso.show();
+					
 				}
 			}
 		});
