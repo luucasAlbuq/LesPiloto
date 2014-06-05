@@ -35,7 +35,7 @@
                     <ListView
                         android:id="@+id/semanaAtual"
                         android:layout_width="fill_parent"
-                        android:layout_height="286dp"
+                        android:layout_height="match_parent"
                         android:cacheColorHint="#00000000" >
                     </ListView>
                 </LinearLayout>
@@ -68,5 +68,14 @@
             </FrameLayout>
         </LinearLayout>
     </TabHost>
+
+    <Button
+        android:id="@+id/botaoHistorico"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/botao_voltar_atividade" />
 
 </RelativeLayout>

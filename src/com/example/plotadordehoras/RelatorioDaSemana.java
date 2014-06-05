@@ -105,10 +105,10 @@ public class RelatorioDaSemana extends Activity {
 				convertView = layoutInflater
 						.inflate(R.layout.two_col_row, null);
 				coluna = new ViewColuna();
-				coluna.colunaTempoInvestidoTextView = (TextView) convertView
-						.findViewById(R.id.idTempoInvestido);
 				coluna.colunaAtividadeTextView = (TextView) convertView
 						.findViewById(R.id.idAtividade);
+				coluna.colunaTempoInvestidoTextView = (TextView) convertView
+						.findViewById(R.id.idTempoInvestido);
 				coluna.colunaPorcentagemTextView = (TextView) convertView
 						.findViewById(R.id.idPorcentagem);
 
@@ -117,12 +117,12 @@ public class RelatorioDaSemana extends Activity {
 				coluna = (ViewColuna) convertView.getTag();
 			}
 
-			coluna.colunaTempoInvestidoTextView.setText(String
-					.valueOf(getGerarRelatorio().getTempoAtivades().get(
-							position)));
 			coluna.colunaAtividadeTextView.setText(String
 					.valueOf(getGerarRelatorio().getNomeAtivades()
 							.get(position)));
+			coluna.colunaTempoInvestidoTextView.setText(String
+					.valueOf(getGerarRelatorio().getTempoAtivades().get(
+							position)));
 			coluna.colunaPorcentagemTextView.setText(String
 					.valueOf(getGerarRelatorio().porcentagemDecrescente().get(
 							position)));
