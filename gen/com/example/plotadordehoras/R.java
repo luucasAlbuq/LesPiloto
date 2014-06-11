@@ -18,21 +18,21 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int TextAtividadeSemana=0x7f06001e;
+        public static final int TextAtividadeSemana=0x7f060021;
         public static final int autoCompleteNome=0x7f060029;
         public static final int botaoCadastrar=0x7f060026;
-        public static final int botaoGeraRelatorioAtividade=0x7f06001f;
+        public static final int botaoGeraRelatorioAtividade=0x7f06001e;
         public static final int botaoGerarGrafico=0x7f060018;
+        public static final int botaoHistorico=0x7f06000f;
         public static final int botaoHistoricoComparativo=0x7f060020;
         public static final int botaoRelatorioAtividade=0x7f060012;
-        public static final int botaoVoltar=0x7f060021;
+        public static final int botaoVoltar=0x7f06001f;
         public static final int botaoVoltarAtividade=0x7f060025;
         public static final int botaoVooltarRelatorio=0x7f060019;
-        public static final int cadastro=0x7f06000f;
-        public static final int cadastroAtividade=0x7f060010;
-        public static final int cadastroMin=0x7f060011;
+        public static final int cadastro=0x7f060010;
+        public static final int cadastroAtividade=0x7f060011;
         public static final int dataAtividade=0x7f060023;
-        public static final int editDataAtividade=0x7f060028;
+        public static final int editDataAtividade=0x7f060027;
         public static final int editMinAtividade=0x7f060001;
         public static final int editMinAtividade2=0x7f060003;
         public static final int editMinAtividade3=0x7f060005;
@@ -59,7 +59,7 @@ public final class R {
         public static final int tab1=0x7f060009;
         public static final int tab2=0x7f06000b;
         public static final int tab3=0x7f06000d;
-        public static final int tempoAtividade=0x7f060027;
+        public static final int tempoAtividade=0x7f060028;
         public static final int tv_1=0x7f060014;
         public static final int tv_2=0x7f060015;
         public static final int tv_3=0x7f060016;
@@ -76,6 +76,8 @@ public final class R {
     public static final class string {
         public static final int Cadastro=0x7f040004;
         public static final int app_name=0x7f040000;
+        public static final int atividade=0x7f040015;
+        public static final int atividade_da_semana=0x7f040013;
         public static final int atividade_semana=0x7f04000b;
         public static final int botao_cadastrar=0x7f040008;
         public static final int botao_gerar_grafico=0x7f04000a;
@@ -86,15 +88,18 @@ public final class R {
         public static final int gera_historico=0x7f040010;
         public static final int gera_relatorio=0x7f04000f;
         public static final int gera_relatorio_atividade_semana=0x7f04000e;
+        public static final int gerenciador_atividade=0x7f040012;
         public static final int hello_world=0x7f040002;
         public static final int mes_atividade=0x7f04000c;
+        public static final int minutos=0x7f040014;
         public static final int nome_atividade=0x7f040005;
+        public static final int porcentagem=0x7f040016;
         public static final int semana_atividade=0x7f04000d;
         public static final int tela_cadastro_name=0x7f040001;
         public static final int tempo_atividade=0x7f040006;
-        public static final int title_activity_cadastrar_min_so_pra_teste=0x7f040012;
-        public static final int title_activity_historico=0x7f040015;
-        public static final int title_activity_relatorio_da_semana=0x7f040014;
-        public static final int title_activity_relatorio_semana=0x7f040013;
+        public static final int title_activity_cadastrar_min_so_pra_teste=0x7f040017;
+        public static final int title_activity_historico=0x7f04001a;
+        public static final int title_activity_relatorio_da_semana=0x7f040019;
+        public static final int title_activity_relatorio_semana=0x7f040018;
     }
 }

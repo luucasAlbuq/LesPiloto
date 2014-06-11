@@ -35,7 +35,7 @@
                     <ListView
                         android:id="@+id/semanaAtual"
                         android:layout_width="fill_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="320dp"
                         android:cacheColorHint="#00000000" >
                     </ListView>
                 </LinearLayout>
@@ -48,7 +48,7 @@
                     <ListView
                         android:id="@+id/semanaPassada"
                         android:layout_width="fill_parent"
-                        android:layout_height="286dp"
+                        android:layout_height="320dp"
                         android:cacheColorHint="#00000000" >
                     </ListView>
                 </LinearLayout>
@@ -61,7 +61,7 @@
                     <ListView
                         android:id="@+id/semanaRetrasada"
                         android:layout_width="fill_parent"
-                        android:layout_height="286dp"
+                        android:layout_height="320dp"
                         android:cacheColorHint="#00000000" >
                     </ListView>
                 </LinearLayout>

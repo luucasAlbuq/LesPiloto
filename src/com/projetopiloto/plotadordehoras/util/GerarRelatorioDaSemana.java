@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 import android.content.Context;
 import model.Atividade;
 import DaoBD.ManipulaBD;
@@ -23,15 +24,24 @@ public class GerarRelatorioDaSemana {
 	public GerarRelatorioDaSemana(Context context) {
 		manipulaBD = new ManipulaBD(context);
 		atividadesOrdenadasDecrescente = new ArrayList<Atividade>();
-		populaListaAtividades();
+		try {
+			populaListaAtividades("01/06/2014", "07/06/2014");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * Faz uma consulta no BD buscando todas as ativadades da semana corrente.
 	 */
-	public void populaListaAtividades() {
-		setAtividadesOrdenadasDecrescente(getManipulaBD()
-				.getAtividadesDaSemana("01/06/2014", "07/06/2014"));
+	public void populaListaAtividades(String dataInicio, String dataFim) throws Exception {
+		if(verificaFormatoData(dataFim)&&verificaFormatoData(dataInicio)){
+			setAtividadesOrdenadasDecrescente(getManipulaBD()
+					.getAtividadesDaSemana(dataInicio, dataFim));
+		}else{
+			throw new Exception("Data no formato invalido, formato correto deve ser dd/mm/yyyy");
+		}
+		
 	}
 
 	public ManipulaBD getManipulaBD() {
@@ -58,7 +68,7 @@ public class GerarRelatorioDaSemana {
 			List<Atividade> atividadesOrdenadasDecrescente) {
 		this.atividadesOrdenadasDecrescente = atividadesOrdenadasDecrescente;
 	}
-	
+
 	public List<String> getNomeAtivades() {
 		ArrayList<String> nomes = new ArrayList<String>();
 		for (Atividade atividade : getAtividadesOrdenadasDecrescente()) {
@@ -68,6 +78,11 @@ public class GerarRelatorioDaSemana {
 		return nomes;
 	}
 
+	/**
+	 * Retorna uma lista com o tempo investido de cada atividade de uma semana
+	 * 
+	 * @return List<Integer> tempoInvestido
+	 */
 	public List<Integer> getTempoAtivades() {
 		ArrayList<Integer> temp = new ArrayList<Integer>();
 		for (Atividade atividade : getAtividadesOrdenadasDecrescente()) {
@@ -77,6 +92,12 @@ public class GerarRelatorioDaSemana {
 		return temp;
 	}
 
+	/**
+	 * Compara duas atividades
+	 * 
+	 * @author Pablo
+	 * 
+	 */
 	private static class AtividadeComparator implements Comparator<Atividade> {
 		public int compare(Atividade item1, Atividade item2) {
 			int n1 = item1.getTempo();
@@ -85,22 +106,45 @@ public class GerarRelatorioDaSemana {
 		}
 	}
 
+	/**
+	 * Calcula a porcentagem de tempo investido de uma atividade em relação ao
+	 * tempo total de investido em uma semana
+	 * 
+	 * @return List<String> porcentagens
+	 */
 	public List<String> porcentagemDecrescente() {
 		ArrayList<String> porcentagens = new ArrayList<String>();
 		double totalTempo = getTotalTempo();
 		for (Atividade atv : getAtividadesOrdenadasDecrescente()) {
-			double porcentagemAtv = (atv.getTempo() / totalTempo)*100;
-			porcentagens.add(String.format("%.2f", porcentagemAtv)+"%");
+			double porcentagemAtv = (atv.getTempo() / totalTempo) * 100;
+			porcentagens.add(String.format("%.2f", porcentagemAtv) + "%");
 		}
 		return porcentagens;
 	}
 
+	/**
+	 * Calcula o tempo total investido em atividades de uma semana
+	 * 
+	 * @return double totalTempoInvestido
+	 */
 	private double getTotalTempo() {
 		float contador = 0;
 		for (Atividade atv : getAtividadesOrdenadasDecrescente()) {
 			contador += atv.getTempo();
 		}
 		return contador;
+	}
+
+	// TODO
+	/**
+	 * Verifica se data esta no formato dd/mm/yyyy
+	 * 
+	 * @param String
+	 *            data
+	 * @return boolean
+	 */
+	protected boolean verificaFormatoData(String data) {
+		return true;
 	}
 
 }
