@@ -15,7 +15,7 @@ import com.google.gson.GsonBuilder;
 public class Request extends AsyncTask<Map, Void, Boolean> {
 
 	private static String LOCAL_DNS_IP = "10.0.2.2:8080/ManageTime";
-	private static String PRODUCTION_DNS_IP = "http://warm-spire-3935.herokuapp.com";
+	private static String PRODUCTION_DNS_IP = "warm-spire-3935.herokuapp.com";
 	
 	private static String URL_POST = "http://" + PRODUCTION_DNS_IP + "/post/atividade";
 	
