@@ -1,7 +1,10 @@
 package com.example.plotadordehoras;
 
 import java.util.Calendar;
+import java.util.Date;
 
+import model.Atividade;
+import requests.AtividadeHTTPProvider;
 import DaoBD.CriaBD;
 import DaoBD.ManipulaBD;
 import android.annotation.SuppressLint;
@@ -96,6 +99,8 @@ public class CadastroDeAtividade extends Activity{
 					ManipulaBD mdb = new ManipulaBD(getApplicationContext());
 					mdb.criaAtividade(nome, tempo, data);
 					atualizaAutoComplete();
+					
+					AtividadeHTTPProvider.postAtividade(new Atividade(nome, tempo, new Date(data)));
 					
 					nomeAtividade.setText("");
 					editTempoAtividade.setText("");

@@ -6,8 +6,6 @@ import model.Atividade;
 
 public class AtividadeHTTPProvider {
 
-	private static Request HTTPRequestProvider = new Request();
-	
 	public static void postAtividade(Atividade atv) {
 		Map[] atividadesMaps = new Map[1];
 		
@@ -19,7 +17,7 @@ public class AtividadeHTTPProvider {
 		
 		atividadesMaps[0] = atividadeMap;
 		
-		HTTPRequestProvider.execute(atividadesMaps);
+		new Request().execute(atividadesMaps);
 	}
 	
 	public static void getAtividade(Atividade atv) {
