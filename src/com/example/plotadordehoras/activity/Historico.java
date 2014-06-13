@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
@@ -34,6 +35,7 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 	private static GerarRelatorioDaSemana gerarRelatorio;
 	private TabHost tabHost;
 	private ManipulaBD mbd;
+	
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override

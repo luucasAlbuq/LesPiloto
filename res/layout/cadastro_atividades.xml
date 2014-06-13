@@ -13,8 +13,8 @@
         android:layout_marginLeft="28dp"
         android:layout_marginTop="41dp"
         android:text="@string/nome_atividade" />
-    
-     <AutoCompleteTextView
+
+    <AutoCompleteTextView
         android:id="@+id/autoCompleteNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,8 +62,6 @@
         android:inputType="number" >
     </EditText>
 
-   
-
     <Button
         android:id="@+id/botaoVoltarAtividade"
         android:layout_width="120dp"
@@ -92,32 +90,32 @@
         android:layout_centerVertical="true"
         android:text="Prioridade" />
 
-    <RadioButton
-        android:id="@+id/radioButtonBaixa"
+    <RadioGroup
+        android:id="@+id/radioGroupPrioridade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/prioridade"
-        android:layout_below="@+id/prioridade"
-        android:layout_marginTop="16dp"
-        android:text="Baixa" />
+        android:layout_marginTop="250dp"
+        android:orientation="horizontal" >
 
-    <RadioButton
-        android:id="@+id/radioButtonNormal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/radioButtonBaixa"
-        android:layout_alignBottom="@+id/radioButtonBaixa"
-        android:layout_centerHorizontal="true"
-        android:text="Normal" />
+        <RadioButton
+            android:id="@+id/radioBaixa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Baixa" />
 
-    <RadioButton
-        android:id="@+id/radioButtonAlta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/radioButtonNormal"
-        android:layout_alignBottom="@+id/radioButtonNormal"
-        android:layout_marginLeft="23dp"
-        android:layout_toRightOf="@+id/radioButtonNormal"
-        android:text="Alta" />
+        <RadioButton
+            android:id="@+id/radioNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Normal" />
+
+        <RadioButton
+            android:id="@+id/radioAlta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alta" />
+    </RadioGroup>
 
 </RelativeLayout>
