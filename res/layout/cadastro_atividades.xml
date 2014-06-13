@@ -13,6 +13,17 @@
         android:layout_marginLeft="28dp"
         android:layout_marginTop="41dp"
         android:text="@string/nome_atividade" />
+    
+     <AutoCompleteTextView
+        android:id="@+id/autoCompleteNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nomeAtividade"
+        android:layout_below="@+id/nomeAtividade"
+        android:ems="10" >
+
+        <requestFocus />
+    </AutoCompleteTextView>
 
     <TextView
         android:id="@+id/dataAtividade"
@@ -22,27 +33,7 @@
         android:layout_below="@+id/editTempoAtividade"
         android:text="@string/data_atividade" />
 
-    <Button
-        android:id="@+id/botaoVoltarAtividade"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="250dp"
-        android:gravity="center"
-        android:text="@string/botao_voltar_atividade" />
-
-    <Button
-        android:id="@+id/botaoCadastrar"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="250dp"
-        android:gravity="center"
-        android:text="@string/botao_cadastrar" />
-
- 	<EditText
+    <EditText
         android:id="@+id/editDataAtividade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,38 +41,83 @@
         android:layout_below="@+id/dataAtividade"
         android:ems="10"
         android:inputType="date" >
-
-      
     </EditText>
 
- 	<TextView
- 	    android:id="@+id/tempoAtividade"
- 	    android:layout_width="wrap_content"
- 	    android:layout_height="wrap_content"
- 	    android:layout_alignLeft="@+id/nomeAtividade"
- 	    android:layout_below="@+id/nomeAtividade"
- 	    android:layout_marginTop="42dp"
- 	    android:text="@string/tempo_atividade" />
+    <TextView
+        android:id="@+id/tempoAtividade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nomeAtividade"
+        android:layout_below="@+id/nomeAtividade"
+        android:layout_marginTop="42dp"
+        android:text="@string/tempo_atividade" />
 
- 	<EditText
- 	    android:id="@+id/editTempoAtividade"
- 	    android:layout_width="100dp"
- 	    android:layout_height="wrap_content"
- 	    android:layout_alignLeft="@+id/tempoAtividade"
- 	    android:layout_below="@+id/tempoAtividade"
- 	    android:ems="10"
- 	    android:inputType="number" >
+    <EditText
+        android:id="@+id/editTempoAtividade"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tempoAtividade"
+        android:layout_below="@+id/tempoAtividade"
+        android:ems="10"
+        android:inputType="number" >
+    </EditText>
 
- 	    
- 	</EditText>
+   
 
- 	<AutoCompleteTextView
- 	    android:id="@+id/autoCompleteNome"
- 	    android:layout_width="wrap_content"
- 	    android:layout_height="wrap_content"
- 	    android:layout_alignLeft="@+id/nomeAtividade"
- 	    android:layout_below="@+id/nomeAtividade"
- 	    android:ems="10" ><requestFocus />
- 	</AutoCompleteTextView>
- 	
+    <Button
+        android:id="@+id/botaoVoltarAtividade"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="165dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="350dp"
+        android:gravity="center"
+        android:text="@string/botao_voltar_atividade" />
+
+    <Button
+        android:id="@+id/botaoCadastrar"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="350dp"
+        android:gravity="center"
+        android:text="@string/botao_cadastrar" />
+
+    <TextView
+        android:id="@+id/prioridade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editDataAtividade"
+        android:layout_centerVertical="true"
+        android:text="Prioridade" />
+
+    <RadioButton
+        android:id="@+id/radioButtonBaixa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/prioridade"
+        android:layout_below="@+id/prioridade"
+        android:layout_marginTop="16dp"
+        android:text="Baixa" />
+
+    <RadioButton
+        android:id="@+id/radioButtonNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/radioButtonBaixa"
+        android:layout_alignBottom="@+id/radioButtonBaixa"
+        android:layout_centerHorizontal="true"
+        android:text="Normal" />
+
+    <RadioButton
+        android:id="@+id/radioButtonAlta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/radioButtonNormal"
+        android:layout_alignBottom="@+id/radioButtonNormal"
+        android:layout_marginLeft="23dp"
+        android:layout_toRightOf="@+id/radioButtonNormal"
+        android:text="Alta" />
+
 </RelativeLayout>

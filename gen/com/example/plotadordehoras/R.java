@@ -19,26 +19,30 @@ public final class R {
     }
     public static final class id {
         public static final int TextAtividadeSemana=0x7f060012;
-        public static final int autoCompleteNome=0x7f06001a;
-        public static final int botaoCadastrar=0x7f060017;
+        public static final int autoCompleteNome=0x7f060014;
+        public static final int botaoCadastrar=0x7f06001a;
         public static final int botaoGeraRelatorioAtividade=0x7f06000f;
         public static final int botaoGerarGrafico=0x7f060006;
         public static final int botaoHistoricoComparativo=0x7f060011;
         public static final int botaoRelatorioAtividade=0x7f060009;
         public static final int botaoVoltar=0x7f060010;
-        public static final int botaoVoltarAtividade=0x7f060016;
+        public static final int botaoVoltarAtividade=0x7f060019;
         public static final int cadastro=0x7f060008;
         public static final int cadastroAtividade=0x7f060007;
-        public static final int dataAtividade=0x7f060014;
-        public static final int editDataAtividade=0x7f060018;
-        public static final int editTempoAtividade=0x7f060015;
-        public static final int idAtividade=0x7f06001c;
-        public static final int idPorcentagem=0x7f06001d;
-        public static final int idTempoInvestido=0x7f06001b;
+        public static final int dataAtividade=0x7f060015;
+        public static final int editDataAtividade=0x7f060017;
+        public static final int editTempoAtividade=0x7f060016;
+        public static final int idAtividade=0x7f060020;
+        public static final int idPorcentagem=0x7f060021;
+        public static final int idTempoInvestido=0x7f06001f;
         public static final int imageView1=0x7f06000a;
         public static final int mesAtividade=0x7f06000b;
         public static final int mesesAno=0x7f06000e;
         public static final int nomeAtividade=0x7f060013;
+        public static final int prioridade=0x7f06001b;
+        public static final int radioButtonAlta=0x7f06001e;
+        public static final int radioButtonBaixa=0x7f06001c;
+        public static final int radioButtonNormal=0x7f06001d;
         public static final int semanaAtividade=0x7f06000d;
         public static final int semanaAtual=0x7f060001;
         public static final int semanaMes=0x7f06000c;
@@ -47,7 +51,7 @@ public final class R {
         public static final int tab1=0x7f060000;
         public static final int tab2=0x7f060002;
         public static final int tab3=0x7f060004;
-        public static final int tempoAtividade=0x7f060019;
+        public static final int tempoAtividade=0x7f060018;
     }
     public static final class layout {
         public static final int activity_historico=0x7f030000;
