@@ -21,6 +21,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 /**
@@ -39,6 +41,8 @@ public class CadastroDeAtividade extends Activity{
 	private String dataAtual;
 	private ArrayAdapter<Object> adapter;
 	private SQLiteDatabase sql = null;
+	private RadioButton botaoPrioridade;
+	private RadioGroup grupoPrioridade;
 	
 	
 	@SuppressLint("ShowToast")
@@ -95,9 +99,11 @@ public class CadastroDeAtividade extends Activity{
 					String nome = nomeAtividade.getText().toString();
 					int tempo = Integer.parseInt(editTempoAtividade.getText().toString());
 					String data = editDataAtividade.getText().toString();
+					String prioridade = getPrioridade();
+					System.out.println(prioridade);
 //			
 					ManipulaBD mdb = new ManipulaBD(getApplicationContext());
-					mdb.criaAtividade(nome, tempo, data);
+					mdb.criaAtividade(nome, tempo, data, prioridade);
 					atualizaAutoComplete();
 					
 					AtividadeHTTPProvider.postAtividade(new Atividade(nome, tempo, new Date(data)));
@@ -181,6 +187,14 @@ public class CadastroDeAtividade extends Activity{
         String[] atividades = (String[]) mdb.getNomeAtividades().toArray(new String[0]);
         adapter = new ArrayAdapter<Object> (this,android.R.layout.simple_list_item_1,atividades);
         nomeAtividade.setAdapter(adapter);
+	}
+	
+	public String getPrioridade() {
+		
+		grupoPrioridade = (RadioGroup) findViewById(R.id.radioGroupPrioridade);
+		int opcaoSelecionada = grupoPrioridade.getCheckedRadioButtonId();
+		botaoPrioridade = (RadioButton) findViewById(opcaoSelecionada);
+		return botaoPrioridade.getText().toString();
 	}
 	
 }

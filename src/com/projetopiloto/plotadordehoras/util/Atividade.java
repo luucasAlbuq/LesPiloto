@@ -20,14 +20,16 @@ public class Atividade  implements Comparable<Atividade> {
 	private String nome;
 	private int tempo;
 	private Date data;
-	
-	public Atividade(String nome, int tempo, Date data) throws AtividadeException{
+	private String prioridade;
+
+	public Atividade(String nome, int tempo, Date data, String prioridade) throws AtividadeException{
 		if (!(verificaAtividade())){
 			throw new AtividadeException("Atividade Invalida");
 		}
 		setNome(nome);
 		setTempo(tempo);
 		setData(data);
+		setPrioridade(prioridade);
 	}
 
 	public Date getData() {
@@ -59,6 +61,14 @@ public class Atividade  implements Comparable<Atividade> {
 			return false;
 		}
 		return true;
+	}
+	
+	public String getPrioridade() {
+		return prioridade;
+	}
+
+	public void setPrioridade(String prioridade) {
+		this.prioridade = prioridade;
 	}
 
 	@Override

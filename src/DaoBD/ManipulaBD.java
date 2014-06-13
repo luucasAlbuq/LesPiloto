@@ -22,7 +22,7 @@ public class ManipulaBD {
 		criaBD = new CriaBD(context);
 	}
 
-	public long criaAtividade (String nome, int tempo, String data){
+	public long criaAtividade (String nome, int tempo, String data, String prioridade){
 		//Convertendo a data para o formato que o SQLite utiliza
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 		try {
@@ -35,6 +35,7 @@ public class ManipulaBD {
 		valores.put(CriaBD.NOME_ATIVIDADE, nome);
 		valores.put(CriaBD.TEMPO_ATIVIDADE, tempo);
 		valores.put(CriaBD.DATA_ATIVIDADE, data);
+		valores.put(CriaBD.PRIORIDADE_ATIVIDADE, prioridade);
 		database = criaBD.getReadableDatabase();
 		long index = database.insert(CriaBD.TABLE_NAME, null, valores);
 		return index;

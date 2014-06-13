@@ -2,8 +2,6 @@ package com.example.plotadordehoras.activity;
 
 import java.util.Calendar;
 
-import com.example.plotadordehoras.R;
-
 import DaoBD.CriaBD;
 import DaoBD.ManipulaBD;
 import android.annotation.SuppressLint;
@@ -20,7 +18,11 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import com.example.plotadordehoras.R;
 
 /**
  * 
@@ -38,6 +40,9 @@ public class CadastroDeAtividade extends Activity{
 	private String dataAtual;
 	private ArrayAdapter<Object> adapter;
 	private SQLiteDatabase sql = null;
+	private RadioGroup grupoPrioridade;
+	private RadioButton botaoPrioridade;
+	private RadioButton prioridadeAlta;
 	
 	
 	@SuppressLint("ShowToast")
@@ -51,6 +56,8 @@ public class CadastroDeAtividade extends Activity{
         
         editDataAtividade = (EditText) findViewById(R.id.editDataAtividade);
         editTempoAtividade = (EditText) findViewById(R.id.editTempoAtividade);
+        
+        prioridadeAlta = (RadioButton) findViewById(R.id.radioAlta);
         
         atualizaAutoComplete();
         
@@ -75,6 +82,7 @@ public class CadastroDeAtividade extends Activity{
         final Toast nomeAtividadeInvalido = Toast.makeText(this, "Nome da Atividade não pode ser vazio ou nula", Toast.LENGTH_LONG);
         final Toast atividadeTempoInvalido = Toast.makeText(this, "Tempo da Atividade não pode ser vazia ou nula", Toast.LENGTH_LONG);
         final Toast dataInvalido = Toast.makeText(this, "Tempo da Atividade não pode ser vazia ou nula", Toast.LENGTH_LONG);
+        
         cadastrar.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -94,14 +102,17 @@ public class CadastroDeAtividade extends Activity{
 					String nome = nomeAtividade.getText().toString();
 					int tempo = Integer.parseInt(editTempoAtividade.getText().toString());
 					String data = editDataAtividade.getText().toString();
+					String prioridade = getPrioridade();
+					System.out.println(prioridade);
 //			
 					ManipulaBD mdb = new ManipulaBD(getApplicationContext());
-					mdb.criaAtividade(nome, tempo, data);
+					mdb.criaAtividade(nome, tempo, data, prioridade);
 					atualizaAutoComplete();
 					
 					nomeAtividade.setText("");
 					editTempoAtividade.setText("");
 					nomeAtividade.requestFocus();
+					prioridadeAlta.setChecked(true);
 					
 					alertaSucesso.show();
 					
@@ -178,6 +189,16 @@ public class CadastroDeAtividade extends Activity{
         String[] atividades = (String[]) mdb.getNomeAtividades().toArray(new String[0]);
         adapter = new ArrayAdapter<Object> (this,android.R.layout.simple_list_item_1,atividades);
         nomeAtividade.setAdapter(adapter);
+	}
+	
+	public String getPrioridade(){
+		
+		grupoPrioridade = (RadioGroup) findViewById(R.id.radioGroupPrioridade);
+		int opcao = grupoPrioridade.getCheckedRadioButtonId();
+		botaoPrioridade = (RadioButton) findViewById(opcao);
+		String prioridade = botaoPrioridade.getText().toString();
+		
+		return prioridade;
 	}
 	
 }

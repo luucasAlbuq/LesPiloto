@@ -111,18 +111,18 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 					}
 				}));
 
-		Button voltarHistorico = (Button) findViewById(R.id.botaoHistorico);
-		voltarHistorico.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-
-				Intent telaRelatorioDaSemana = new Intent(Historico.this,
-						AtividadesDaSemana.class);
-				Historico.this.startActivity(telaRelatorioDaSemana);
-
-			}
-		});
+//		//Button voltarHistorico = (Button) findViewById(R.id.botaoHistorico);
+//		//voltarHistorico.setOnClickListener(new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//
+//				Intent telaRelatorioDaSemana = new Intent(Historico.this,
+//						AtividadesDaSemana.class);
+//				Historico.this.startActivity(telaRelatorioDaSemana);
+//
+//			}
+//		});
 	}
 
 	public ListView getSemanaAtualListView() {
