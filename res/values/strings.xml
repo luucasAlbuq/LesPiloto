@@ -28,6 +28,7 @@
     <string name="title_activity_relatorio_semana">Relatorio Semanal de Atividades</string>
     <string name="title_activity_relatorio_da_semana">RelatorioDaSemana</string>
     <string name="title_activity_historico">Historico</string>
+    <string name="gerar_grafico">Gerar Gráfico</string>
 
     <string-array name="meses_ano">
         <item>Janeiro</item>

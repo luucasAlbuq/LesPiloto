@@ -70,12 +70,23 @@
     </TabHost>
 
     <Button
-        android:id="@+id/botaoHistorico"
-        android:layout_width="200dp"
-        android:layout_height="55dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/botao_voltar_atividade" />
+        android:id="@+id/botaoGerarGrafico"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="390dp"
+        android:layout_marginLeft="25dp"
+        android:width="210dp"
+        android:height="110dp"
+        android:text="@string/gerar_grafico" />
+
+    <Button
+        android:id="@+id/cadastroAtividade"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="165dp"
+        android:layout_marginTop="390dp"
+        android:width="210dp"
+        android:height="110dp"
+        android:text="@string/Cadastro" />
 
 </RelativeLayout>

@@ -2,7 +2,7 @@ package com.projetopiloto.plotadordehoras.testes;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-import com.example.plotadordehoras.MainActivity;
+import com.example.plotadordehoras.activity.MainActivity;
 import com.robotium.solo.Solo;
 
 public class TesteMainActivity extends ActivityInstrumentationTestCase2<MainActivity> {

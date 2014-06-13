@@ -34,7 +34,9 @@ public class PieGraph {
 			renderer.addSeriesRenderer(r);
 		}
 		renderer.setChartTitle("Atividades da Semana");
-		renderer.setChartTitleTextSize(10);
+		renderer.setChartTitleTextSize(30);
+		renderer.setLabelsTextSize(20);
+		renderer.setLegendTextSize(20);
 		renderer.setZoomButtonsVisible(true);
 
 		Intent intent = ChartFactory.getPieChartIntent(context, series, renderer, "Atividades");

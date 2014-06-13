@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
-import com.example.plotadordehoras.CadastroDeAtividade;
+import com.example.plotadordehoras.activity.CadastroDeAtividade;
 import com.robotium.solo.Solo;
 
 public class TesteCadastroDeAtividade extends ActivityInstrumentationTestCase2<CadastroDeAtividade> {
