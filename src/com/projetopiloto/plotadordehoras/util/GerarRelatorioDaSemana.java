@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.projetopiloto.plotadordehoras.excecoes.AtividadeException;
+
 import android.content.Context;
 import model.Atividade;
 import DaoBD.ManipulaBD;
@@ -34,12 +36,12 @@ public class GerarRelatorioDaSemana {
 	/**
 	 * Faz uma consulta no BD buscando todas as ativadades da semana corrente.
 	 */
-	public void populaListaAtividades(String dataInicio, String dataFim) throws Exception {
+	public void populaListaAtividades(String dataInicio, String dataFim) throws AtividadeException {
 		if(verificaFormatoData(dataFim)&&verificaFormatoData(dataInicio)){
 			setAtividadesOrdenadasDecrescente(getManipulaBD()
 					.getAtividadesDaSemana(dataInicio, dataFim));
 		}else{
-			throw new Exception("Data no formato invalido, formato correto deve ser dd/mm/yyyy");
+			throw new AtividadeException("Data no formato invalido, formato correto deve ser dd/mm/yyyy");
 		}
 		
 	}

@@ -88,43 +88,34 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editDataAtividade"
         android:layout_centerVertical="true"
-        android:text="@string/prioridade" />
+        android:text="Prioridade" />
 
     <RadioGroup
         android:id="@+id/radioGroupPrioridade"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/prioridade"
         android:layout_marginTop="250dp"
         android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/radioBaixa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Baixa" />
+
+        <RadioButton
+            android:id="@+id/radioNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Media" />
+
+        <RadioButton
+            android:id="@+id/radioAlta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alta" />
     </RadioGroup>
-
-    <RadioButton
-        android:id="@+id/radioBaixa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/botaoCadastrar"
-        android:layout_below="@+id/radioGroupPrioridade"
-        android:layout_marginTop="14dp"
-        android:text="@string/radio_baixa" />
-
-    <RadioButton
-        android:id="@+id/radioNormal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/radioBaixa"
-        android:layout_alignBottom="@+id/radioBaixa"
-        android:layout_toRightOf="@+id/radioBaixa"
-        android:text="@string/radio_media" />
-
-    <RadioButton
-        android:id="@+id/radioAlta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/radioNormal"
-        android:layout_alignBottom="@+id/radioNormal"
-        android:layout_toRightOf="@+id/radioNormal"
-        android:checked="true"
-        android:text="@string/radio_alta" />
 
 </RelativeLayout>

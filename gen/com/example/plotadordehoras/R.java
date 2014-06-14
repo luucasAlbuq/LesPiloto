@@ -83,6 +83,10 @@ public final class R {
         public static final int minutos=0x7f040014;
         public static final int nome_atividade=0x7f040005;
         public static final int porcentagem=0x7f040016;
+        public static final int prioridade=0x7f04001f;
+        public static final int radio_alta=0x7f04001c;
+        public static final int radio_baixa=0x7f04001e;
+        public static final int radio_media=0x7f04001d;
         public static final int semana_atividade=0x7f04000d;
         public static final int tela_cadastro_name=0x7f040001;
         public static final int tempo_atividade=0x7f040006;
