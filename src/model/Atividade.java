@@ -18,13 +18,23 @@ public class Atividade {
 	private String titulo;
 	private int tempoInvestido;
 	private Date data;
+	private String prioridade;
 
 	//Refactoring 1: A classe que instanciar Atividade deverá tratar esta exceção como um "popup" no GUI
-	public Atividade(String titulo, int tempoInvestido, Date data){
+	public Atividade(String titulo, int tempoInvestido, Date data, String prioridade){
 		
 		setTitulo(titulo);
 		setTempo(tempoInvestido);
 		setData(data);
+		setPrioridade(prioridade);
+	}
+
+	public String getPrioridade() {
+		return prioridade;
+	}
+
+	public void setPrioridade(String prioridade) {
+		this.prioridade = prioridade;
 	}
 
 	public Date getData() {

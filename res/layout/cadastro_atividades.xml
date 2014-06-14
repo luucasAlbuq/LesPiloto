@@ -88,34 +88,34 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editDataAtividade"
         android:layout_centerVertical="true"
-        android:text="Prioridade" />
+        android:text="@string/prioridade" />
 
     <RadioGroup
         android:id="@+id/radioGroupPrioridade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/prioridade"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="300dp"
         android:orientation="horizontal" >
 
         <RadioButton
             android:id="@+id/radioBaixa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Baixa" />
+            android:text="@string/radio_baixa" />
 
         <RadioButton
             android:id="@+id/radioNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Media" />
+            android:text="@string/radio_media" />
 
         <RadioButton
             android:id="@+id/radioAlta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Alta" />
+            android:checked="true"
+            android:text="@string/radio_alta" />
     </RadioGroup>
 
 </RelativeLayout>
