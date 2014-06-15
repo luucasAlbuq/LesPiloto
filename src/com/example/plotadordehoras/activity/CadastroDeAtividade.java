@@ -81,9 +81,9 @@ public class CadastroDeAtividade extends Activity{
          * Tratada as excecoes para cada campo da tela
          */
         final Toast alertaSucesso = Toast.makeText(this, "Atividade Criada com Sucesso", Toast.LENGTH_LONG);
-        final Toast nomeAtividadeInvalido = Toast.makeText(this, "Nome da Atividade não pode ser vazio ou nula", Toast.LENGTH_LONG);
-        final Toast atividadeTempoInvalido = Toast.makeText(this, "Tempo da Atividade não pode ser vazia ou nula", Toast.LENGTH_LONG);
-        final Toast dataInvalido = Toast.makeText(this, "Tempo da Atividade não pode ser vazia ou nula", Toast.LENGTH_LONG);
+        final Toast nomeAtividadeInvalido = Toast.makeText(this, "Nome da Atividade nï¿½o pode ser vazio ou nula", Toast.LENGTH_LONG);
+        final Toast atividadeTempoInvalido = Toast.makeText(this, "Tempo da Atividade nï¿½o pode ser vazia ou nula", Toast.LENGTH_LONG);
+        final Toast dataInvalido = Toast.makeText(this, "Tempo da Atividade nï¿½o pode ser vazia ou nula", Toast.LENGTH_LONG);
         
         cadastrar.setOnClickListener(new OnClickListener() {
 			
@@ -106,7 +106,8 @@ public class CadastroDeAtividade extends Activity{
 					String data = editDataAtividade.getText().toString();
 					String prioridade = getPrioridade();
 			
-					ManipulaBD mdb = new ManipulaBD(getApplicationContext());
+					ManipulaBD mdb = ManipulaBD.getInstance(getApplicationContext());
+					
 					mdb.criaAtividade(nome, tempo, data, prioridade);
 					atualizaAutoComplete();
 					
@@ -185,7 +186,8 @@ public class CadastroDeAtividade extends Activity{
 	}
 	
 	public void atualizaAutoComplete(){
-		ManipulaBD mdb = new ManipulaBD(getApplicationContext());
+		ManipulaBD mdb = ManipulaBD.getInstance(getApplicationContext());
+
 		nomeAtividade = (AutoCompleteTextView) findViewById(R.id.autoCompleteNome);
         String[] atividades = (String[]) mdb.getNomeAtividades().toArray(new String[0]);
         adapter = new ArrayAdapter<Object> (this,android.R.layout.simple_list_item_1,atividades);

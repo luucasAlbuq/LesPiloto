@@ -12,7 +12,7 @@ import model.Atividade;
 import DaoBD.ManipulaBD;
 
 /**
- * Classe responsavel por fornecer os dados no formato adequeado para a geração
+ * Classe responsavel por fornecer os dados no formato adequeado para a geraï¿½ï¿½o
  * do relatorio de ativiades da semana corrente.
  * 
  * @author Lucas
@@ -24,7 +24,8 @@ public class GerarRelatorioDaSemana {
 	List<Atividade> atividadesOrdenadasDecrescente;
 
 	public GerarRelatorioDaSemana(Context context) {
-		manipulaBD = new ManipulaBD(context);
+		manipulaBD = ManipulaBD.getInstance(context);
+
 		atividadesOrdenadasDecrescente = new ArrayList<Atividade>();
 		try {
 			populaListaAtividades("01/06/2014", "07/06/2014");
@@ -55,7 +56,7 @@ public class GerarRelatorioDaSemana {
 	}
 
 	/**
-	 * Método que retorna uma lista de atividades ordenadas de forma decrescente
+	 * Mï¿½todo que retorna uma lista de atividades ordenadas de forma decrescente
 	 * pelo tempo investido em cada uma delas.
 	 * 
 	 * @return List<Atividade>
@@ -109,7 +110,7 @@ public class GerarRelatorioDaSemana {
 	}
 
 	/**
-	 * Calcula a porcentagem de tempo investido de uma atividade em relação ao
+	 * Calcula a porcentagem de tempo investido de uma atividade em relaï¿½ï¿½o ao
 	 * tempo total de investido em uma semana
 	 * 
 	 * @return List<String> porcentagens

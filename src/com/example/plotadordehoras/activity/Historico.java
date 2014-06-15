@@ -47,7 +47,8 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 		tabHost.setOnTabChangedListener(this);
 
 		gerarRelatorio = new GerarRelatorioDaSemana(this);
-		mbd = new ManipulaBD(getApplicationContext());
+		mbd = ManipulaBD.getInstance(getApplicationContext());
+
 
 		/*
 		 * Instanciando as listVew
@@ -234,7 +235,7 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 			}
 
 			/*
-			 * Bloco para Teste, isso é so pq no meu cel o BD da lastaco [Lucas]
+			 * Bloco para Teste, isso ï¿½ so pq no meu cel o BD da lastaco [Lucas]
 			 */
 			ArrayList<String> nomesAtividadesTeste = new ArrayList<String>();
 			ArrayList<Integer> minTeste = new ArrayList<Integer>();
