@@ -1,6 +1,7 @@
 package com.example.plotadordehoras.activity;
 
-import com.example.plotadordehoras.R;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+
+import com.example.plotadordehoras.R;
 
 public class MainActivity extends Activity {
 	
@@ -47,4 +50,10 @@ public class MainActivity extends Activity {
         
         
     }
+	
+	private void updateTimeAndDate() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+		String currentDateandTime = sdf.format(new Date());
+		lembrador.updateDate(currentDateandTime);
+	}
 }
