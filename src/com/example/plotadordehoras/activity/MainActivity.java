@@ -10,11 +10,15 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
+	
+	private Lembrador lembrador;
 
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        lembrador = new Lembrador(getApplicationContext());
         
         Button cadastro = (Button) findViewById(R.id.cadastroAtividade);
         cadastro.setOnClickListener(new View.OnClickListener() {

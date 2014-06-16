@@ -14,7 +14,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import model.Atividade;
 
-;
 
 @SuppressLint("SimpleDateFormat")
 public class ManipulaBD {
