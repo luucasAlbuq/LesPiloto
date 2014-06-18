@@ -2,8 +2,10 @@ package com.example.plotadordehoras.activity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +23,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        lembrador = new Lembrador(getApplicationContext());
+        lembrador = new Lembrador();
         
         Button cadastro = (Button) findViewById(R.id.cadastroAtividade);
         cadastro.setOnClickListener(new View.OnClickListener() {
@@ -48,12 +50,29 @@ public class MainActivity extends Activity {
 		});
 		
         
-        
+        updateTimeAndDate();
     }
 	
 	private void updateTimeAndDate() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+		
+		sdf.setTimeZone(TimeZone.getDefault());
 		String currentDateandTime = sdf.format(new Date());
-		lembrador.updateDate(currentDateandTime);
+		
+		int dia = Integer.parseInt(currentDateandTime.substring(6, 8));
+		int mes = Integer.parseInt(currentDateandTime.substring(4, 6));
+		int ano = Integer.parseInt(currentDateandTime.substring(0, 4));
+		
+		lembrador.updateDate(dia, mes, ano);
+		
+		//showMessage(String.valueOf(lembrador.getData().getDay()));
 	}
+	
+	private void showMessage(String msg){
+		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+		alertDialog.setTitle(msg);
+		alertDialog.show();
+		
+	}
+	
 }
