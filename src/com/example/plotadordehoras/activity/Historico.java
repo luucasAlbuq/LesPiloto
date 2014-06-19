@@ -2,7 +2,6 @@ package com.example.plotadordehoras.activity;
 
 import java.util.ArrayList;
 
-import model.Atividade;
 import DaoBD.ManipulaBD;
 import android.app.TabActivity;
 import android.content.Context;
@@ -14,8 +13,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabContentFactory;
@@ -36,6 +35,7 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 	private static GerarRelatorioDaSemana gerarRelatorio;
 	private TabHost tabHost;
 	private ManipulaBD mbd;
+	private RadioButton ordenarPorTempo, ordenarPorPrioridade;
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
@@ -57,18 +57,26 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 		semanaRetrasadaListView = (ListView) findViewById(R.id.semanaRetrasada);
 
 		/*
+		 * Instanciando os radios button do tipo de ordenacao
+		 */
+		ordenarPorTempo = (RadioButton) findViewById(R.id.tempoRadio);
+		ordenarPorPrioridade = (RadioButton) findViewById(R.id.prioridadeRadio);
+
+		/*
 		 * Modificando o adptar das listView para pode ficar no formato desejado
 		 * Com tres colunas
 		 */
 		semanaAtualListView.setAdapter(new EfficientAdapter(this,
-				gerarRelatorio.getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE).size(),
-				SemanaEnum.ATUAL));
+				gerarRelatorio.getAtividadesOrdenadasDecrescente(
+						OrdenacaoEnum.PRIORIDADE).size(), SemanaEnum.ATUAL));
 		semanaPassadaListView.setAdapter(new EfficientAdapter(this,
-				gerarRelatorio.getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE).size(),
-				SemanaEnum.PASSADA));
-		semanaRetrasadaListView.setAdapter(new EfficientAdapter(this,
-				gerarRelatorio.getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE).size(),
-				SemanaEnum.REPASSADA));
+				gerarRelatorio.getAtividadesOrdenadasDecrescente(
+						OrdenacaoEnum.PRIORIDADE).size(), SemanaEnum.PASSADA));
+		semanaRetrasadaListView
+				.setAdapter(new EfficientAdapter(this, gerarRelatorio
+						.getAtividadesOrdenadasDecrescente(
+								OrdenacaoEnum.PRIORIDADE).size(),
+						SemanaEnum.REPASSADA));
 
 		/*
 		 * Aqui carrega todas as atividades de uma semana, e joga tudo dentro de
@@ -101,7 +109,22 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 						return semanaRetrasadaListView;
 					}
 				}));
-
+		
+		
+		/*
+		 * Verificando quando o tipo de ordenação é selecionado
+		 */
+		if(ordenarPorPrioridade.isChecked()){
+			getGerarRelatorio().getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE);
+		}else if(ordenarPorTempo.isChecked()){
+			getGerarRelatorio().getAtividadesOrdenadasDecrescente(OrdenacaoEnum.TEMPO);
+		}
+		
+		
+		
+		/*
+		 *Ação de cadastra uma atividade 
+		 */
 		Button cadastratAtividade = (Button) findViewById(R.id.cadastroAtividade);
 		cadastratAtividade.setOnClickListener(new OnClickListener() {
 
@@ -114,7 +137,10 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 
 			}
 		});
-
+		
+		/*
+		 * Ação de gerar gráficos
+		 */
 		Button botaoGerarGraficos = (Button) findViewById(R.id.botaoGerarGrafico);
 		botaoGerarGraficos.setOnClickListener(new OnClickListener() {
 
@@ -127,27 +153,33 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 					// Aqui futuramente vai substituir
 					// getAtividadesOrdenadasDecrescente() por
 					// getAtividadesSemanaAtual()
-					Intent intent = pie.getIntent(getApplicationContext(),
+					Intent intent = pie.getIntent(
+							getApplicationContext(),
 							getGerarRelatorio()
-									.getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE));
+									.getAtividadesOrdenadasDecrescente(
+											OrdenacaoEnum.TEMPO));
 					startActivity(intent);
 
 				} else if (semanaPassadaListView.isClickable()) {
 					// Aqui futuramente vai substituir
 					// getAtividadesOrdenadasDecrescente() por
 					// getAtividadesSemanaPassada()
-					Intent intent = pie.getIntent(getApplicationContext(),
+					Intent intent = pie.getIntent(
+							getApplicationContext(),
 							getGerarRelatorio()
-									.getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE));
+									.getAtividadesOrdenadasDecrescente(
+											OrdenacaoEnum.TEMPO));
 					startActivity(intent);
 
 				} else if (semanaRetrasadaListView.isClickable()) {
 					// Aqui futuramente vai substituir
 					// getAtividadesOrdenadasDecrescente() por
 					// getAtividadesSemanaRetrasada()
-					Intent intent = pie.getIntent(getApplicationContext(),
+					Intent intent = pie.getIntent(
+							getApplicationContext(),
 							getGerarRelatorio()
-									.getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE));
+									.getAtividadesOrdenadasDecrescente(
+											OrdenacaoEnum.TEMPO));
 					startActivity(intent);
 				}
 

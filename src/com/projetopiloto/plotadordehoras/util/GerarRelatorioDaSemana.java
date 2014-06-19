@@ -22,6 +22,7 @@ public class GerarRelatorioDaSemana {
 
 	ManipulaBD manipulaBD;
 	List<Atividade> atividadesOrdenadasDecrescente;
+	OrdenacaoEnum tipoOrdenacao;
 
 	public GerarRelatorioDaSemana(Context context) {
 		manipulaBD = ManipulaBD.getInstance(context);
@@ -66,9 +67,11 @@ public class GerarRelatorioDaSemana {
 	public List<Atividade> getAtividadesOrdenadasDecrescente(
 			OrdenacaoEnum tipoOrdenacao) {
 		if (tipoOrdenacao.equals(OrdenacaoEnum.PRIORIDADE)) {
+			setTipoOrdenacao(tipoOrdenacao);
 			Collections.sort(atividadesOrdenadasDecrescente,
 					new ComparadorPorPrioridade());
 		} else {
+			setTipoOrdenacao(tipoOrdenacao);
 			Collections.sort(atividadesOrdenadasDecrescente,
 					new ComparadorPorTempo());
 		}
@@ -82,7 +85,7 @@ public class GerarRelatorioDaSemana {
 
 	public List<String> getNomeAtivades() {
 		ArrayList<String> nomes = new ArrayList<String>();
-		for (Atividade atividade : getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE)) {
+		for (Atividade atividade : getAtividadesOrdenadasDecrescente(getTipoOrdenacao())) {
 			nomes.add(atividade.getTitulo());
 		}
 
@@ -96,7 +99,7 @@ public class GerarRelatorioDaSemana {
 	 */
 	public List<Integer> getTempoAtivades() {
 		ArrayList<Integer> temp = new ArrayList<Integer>();
-		for (Atividade atividade : getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE)) {
+		for (Atividade atividade : getAtividadesOrdenadasDecrescente(getTipoOrdenacao())) {
 			temp.add(Integer.valueOf(atividade.getTempo()));
 		}
 
@@ -150,7 +153,7 @@ public class GerarRelatorioDaSemana {
 	public List<String> porcentagemDecrescente() {
 		ArrayList<String> porcentagens = new ArrayList<String>();
 		double totalTempo = getTotalTempo();
-		for (Atividade atv : getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE)) {
+		for (Atividade atv : getAtividadesOrdenadasDecrescente(getTipoOrdenacao())) {
 			double porcentagemAtv = (atv.getTempo() / totalTempo) * 100;
 			porcentagens.add(String.format("%.2f", porcentagemAtv) + "%");
 		}
@@ -164,7 +167,7 @@ public class GerarRelatorioDaSemana {
 	 */
 	private double getTotalTempo() {
 		float contador = 0;
-		for (Atividade atv : getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE)) {
+		for (Atividade atv : getAtividadesOrdenadasDecrescente(getTipoOrdenacao())) {
 			contador += atv.getTempo();
 		}
 		return contador;
@@ -184,11 +187,21 @@ public class GerarRelatorioDaSemana {
 
 	public List<String> getPrioridadeAtivades() {
 		ArrayList<String> temp = new ArrayList<String>();
-		for (Atividade atividade : getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE)) {
+		for (Atividade atividade : getAtividadesOrdenadasDecrescente(getTipoOrdenacao())) {
 			temp.add(String.valueOf(atividade.getPrioridade()));
 		}
 
 		return temp;
 	}
+
+	public OrdenacaoEnum getTipoOrdenacao() {
+		return tipoOrdenacao;
+	}
+
+	public void setTipoOrdenacao(OrdenacaoEnum tipoOrdenacao) {
+		this.tipoOrdenacao = tipoOrdenacao;
+	}
+	
+	
 
 }
