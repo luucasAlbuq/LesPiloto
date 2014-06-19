@@ -67,17 +67,20 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 		 * Modificando o adptar das listView para pode ficar no formato desejado
 		 * Com tres colunas
 		 */
-		semanaAtualListView.setAdapter(new EfficientAdapter(this,
-				gerarRelatorio.getAtividadesOrdenadasDecrescente(
-						OrdenacaoEnum.TEMPO).size(), SemanaEnum.ATUAL));
-		semanaPassadaListView.setAdapter(new EfficientAdapter(this,
-				gerarRelatorio.getAtividadesOrdenadasDecrescente(
-						OrdenacaoEnum.TEMPO).size(), SemanaEnum.PASSADA));
-		semanaRetrasadaListView
-				.setAdapter(new EfficientAdapter(this, gerarRelatorio
-						.getAtividadesOrdenadasDecrescente(
-								OrdenacaoEnum.TEMPO).size(),
-						SemanaEnum.REPASSADA));
+		if (semanaAtualListView.isClickable()) {
+			semanaAtualListView.setAdapter(new EfficientAdapter(this,
+					gerarRelatorio.getAtividadesOrdenadasDecrescente(
+							OrdenacaoEnum.TEMPO).size(), SemanaEnum.ATUAL));
+		} else if (semanaPassadaListView.isClickable()) {
+			semanaPassadaListView.setAdapter(new EfficientAdapter(this,
+					gerarRelatorio.getAtividadesOrdenadasDecrescente(
+							OrdenacaoEnum.TEMPO).size(), SemanaEnum.PASSADA));
+
+		} else if (semanaRetrasadaListView.isClickable()) {
+			semanaRetrasadaListView.setAdapter(new EfficientAdapter(this,
+					gerarRelatorio.getAtividadesOrdenadasDecrescente(
+							OrdenacaoEnum.TEMPO).size(), SemanaEnum.REPASSADA));
+		}
 
 		/*
 		 * Aqui carrega todas as atividades de uma semana, e joga tudo dentro de
@@ -114,30 +117,40 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 		/*
 		 * Verificando quando o tipo de ordenação é selecionado
 		 */
-		radioGrupoOrdenacao.setOnCheckedChangeListener(new OnCheckedChangeListener() 
-        {
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                //Aqui vc pode colocar um switch/case para fazer uma tarefa para casa radio checado
-                 switch (checkedId) {
-                     case R.id.prioridadeRadio:
-                    	 
-                    	 getGerarRelatorio().ordenaAtividades(OrdenacaoEnum.PRIORIDADE);
-                    	 semanaAtualListView.setAdapter(new EfficientAdapter(getApplicationContext(),
-                 				gerarRelatorio.getAtividadesOrdenadasDecrescente(
-                 						OrdenacaoEnum.PRIORIDADE).size(), SemanaEnum.ATUAL));
-                    	 
-                         break;
-                     case R.id.tempoRadio:
-                    	 getGerarRelatorio().ordenaAtividades(OrdenacaoEnum.TEMPO);
-                    	 semanaAtualListView.setAdapter(new EfficientAdapter(getApplicationContext(),
-                  				gerarRelatorio.getAtividadesOrdenadasDecrescente(
-                  						OrdenacaoEnum.TEMPO).size(), SemanaEnum.ATUAL));
-                    	 
-                         break;
-                 }
-            }
-        });
+		radioGrupoOrdenacao
+				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+					public void onCheckedChanged(RadioGroup group, int checkedId) {
+						// Aqui vc pode colocar um switch/case para fazer uma
+						// tarefa para casa radio checado
+						switch (checkedId) {
+						case R.id.prioridadeRadio:
 
+							getGerarRelatorio().ordenaAtividades(
+									OrdenacaoEnum.PRIORIDADE);
+							semanaAtualListView
+									.setAdapter(new EfficientAdapter(
+											getApplicationContext(),
+											gerarRelatorio
+													.getAtividadesOrdenadasDecrescente(
+															OrdenacaoEnum.PRIORIDADE)
+													.size(), SemanaEnum.ATUAL));
+
+							break;
+						case R.id.tempoRadio:
+							getGerarRelatorio().ordenaAtividades(
+									OrdenacaoEnum.TEMPO);
+							semanaAtualListView
+									.setAdapter(new EfficientAdapter(
+											getApplicationContext(),
+											gerarRelatorio
+													.getAtividadesOrdenadasDecrescente(
+															OrdenacaoEnum.TEMPO)
+													.size(), SemanaEnum.ATUAL));
+
+							break;
+						}
+					}
+				});
 
 		/*
 		 * Ação de cadastra uma atividade
@@ -284,60 +297,6 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 				coluna = (ViewColuna) convertView.getTag();
 			}
 
-			/*
-			 * Bloco para Teste, isso é so pq no meu cel o BD da lastaco [Lucas]
-			 */
-			ArrayList<String> nomesAtividadesTeste = new ArrayList<String>();
-			ArrayList<Integer> minTeste = new ArrayList<Integer>();
-			ArrayList<String> porcentagemTeste = new ArrayList<String>();
-
-			nomesAtividadesTeste.add("Nadar");
-			nomesAtividadesTeste.add("Estudar");
-			nomesAtividadesTeste.add("Malhar");
-			nomesAtividadesTeste.add("Atividade 1");
-			nomesAtividadesTeste.add("Atividade 2");
-			nomesAtividadesTeste.add("Atividade 3");
-			nomesAtividadesTeste.add("Atividade 4");
-			nomesAtividadesTeste.add("Atividade 5");
-			nomesAtividadesTeste.add("Atividade 6");
-			nomesAtividadesTeste.add("Atividade 7");
-			nomesAtividadesTeste.add("Atividade 8");
-			nomesAtividadesTeste.add("Atividade 9");
-			nomesAtividadesTeste.add("Atividade 10");
-			nomesAtividadesTeste.add("Atividade 11");
-			nomesAtividadesTeste.add("Atividade 12");
-
-			minTeste.add(20);
-			minTeste.add(10);
-			minTeste.add(50);
-			minTeste.add(100);
-			minTeste.add(100);
-			minTeste.add(20);
-			minTeste.add(10);
-			minTeste.add(50);
-			minTeste.add(100);
-			minTeste.add(100);
-			minTeste.add(20);
-			minTeste.add(10);
-			minTeste.add(50);
-			minTeste.add(100);
-			minTeste.add(100);
-
-			porcentagemTeste.add("30%");
-			porcentagemTeste.add("70%");
-			porcentagemTeste.add("20%");
-			porcentagemTeste.add("39%");
-			porcentagemTeste.add("39%");
-			porcentagemTeste.add("30%");
-			porcentagemTeste.add("70%");
-			porcentagemTeste.add("20%");
-			porcentagemTeste.add("39%");
-			porcentagemTeste.add("39%");
-			porcentagemTeste.add("30%");
-			porcentagemTeste.add("70%");
-			porcentagemTeste.add("20%");
-			porcentagemTeste.add("39%");
-			porcentagemTeste.add("39%");
 			/*
 			 * Fim do bloco de teste
 			 */
