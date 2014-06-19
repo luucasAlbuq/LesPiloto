@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.example.plotadordehoras.R;
 import com.projetopiloto.plotadordehoras.util.GerarRelatorioDaSemana;
+import com.projetopiloto.plotadordehoras.util.OrdenacaoEnum;
 import com.projetopiloto.plotadordehoras.util.PieGraph;
 import com.projetopiloto.plotadordehoras.util.SemanaEnum;
 
@@ -60,13 +61,13 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 		 * Com tres colunas
 		 */
 		semanaAtualListView.setAdapter(new EfficientAdapter(this,
-				gerarRelatorio.getAtividadesOrdenadasDecrescente().size(),
+				gerarRelatorio.getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE).size(),
 				SemanaEnum.ATUAL));
 		semanaPassadaListView.setAdapter(new EfficientAdapter(this,
-				gerarRelatorio.getAtividadesOrdenadasDecrescente().size(),
+				gerarRelatorio.getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE).size(),
 				SemanaEnum.PASSADA));
 		semanaRetrasadaListView.setAdapter(new EfficientAdapter(this,
-				gerarRelatorio.getAtividadesOrdenadasDecrescente().size(),
+				gerarRelatorio.getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE).size(),
 				SemanaEnum.REPASSADA));
 
 		/*
@@ -128,7 +129,7 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 					// getAtividadesSemanaAtual()
 					Intent intent = pie.getIntent(getApplicationContext(),
 							getGerarRelatorio()
-									.getAtividadesOrdenadasDecrescente());
+									.getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE));
 					startActivity(intent);
 
 				} else if (semanaPassadaListView.isClickable()) {
@@ -137,7 +138,7 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 					// getAtividadesSemanaPassada()
 					Intent intent = pie.getIntent(getApplicationContext(),
 							getGerarRelatorio()
-									.getAtividadesOrdenadasDecrescente());
+									.getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE));
 					startActivity(intent);
 
 				} else if (semanaRetrasadaListView.isClickable()) {
@@ -146,7 +147,7 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 					// getAtividadesSemanaRetrasada()
 					Intent intent = pie.getIntent(getApplicationContext(),
 							getGerarRelatorio()
-									.getAtividadesOrdenadasDecrescente());
+									.getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE));
 					startActivity(intent);
 				}
 
@@ -226,6 +227,8 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 						.findViewById(R.id.idTempoInvestido);
 				coluna.colunaPorcentagemTextView = (TextView) convertView
 						.findViewById(R.id.idPorcentagem);
+				coluna.colunaPrioridadeTextView = (TextView) convertView
+						.findViewById(R.id.idPrioridade);
 
 				convertView.setTag(coluna);
 			} else {
@@ -321,7 +324,7 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 					.valueOf(gerarRelatorio.porcentagemDecrescente().get(
 							position)));
 			coluna.colunaPrioridadeTextView.setText(String
-					.valueOf(gerarRelatorio.porcentagemDecrescente().get(
+					.valueOf(gerarRelatorio.getPrioridadeAtivades().get(
 							position)));
 
 			return convertView;

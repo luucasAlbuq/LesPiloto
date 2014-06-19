@@ -12,8 +12,8 @@ import model.Atividade;
 import DaoBD.ManipulaBD;
 
 /**
- * Classe responsavel por fornecer os dados no formato adequeado para a gera��o
- * do relatorio de ativiades da semana corrente.
+ * Classe responsavel por fornecer os dados no formato adequeado para a
+ * gera��o do relatorio de ativiades da semana corrente.
  * 
  * @author Lucas
  * 
@@ -37,14 +37,16 @@ public class GerarRelatorioDaSemana {
 	/**
 	 * Faz uma consulta no BD buscando todas as ativadades da semana corrente.
 	 */
-	public void populaListaAtividades(String dataInicio, String dataFim) throws AtividadeException {
-		if(verificaFormatoData(dataFim)&&verificaFormatoData(dataInicio)){
+	public void populaListaAtividades(String dataInicio, String dataFim)
+			throws AtividadeException {
+		if (verificaFormatoData(dataFim) && verificaFormatoData(dataInicio)) {
 			setAtividadesOrdenadasDecrescente(getManipulaBD()
 					.getAtividadesDaSemana(dataInicio, dataFim));
-		}else{
-			throw new AtividadeException("Data no formato invalido, formato correto deve ser dd/mm/yyyy");
+		} else {
+			throw new AtividadeException(
+					"Data no formato invalido, formato correto deve ser dd/mm/yyyy");
 		}
-		
+
 	}
 
 	public ManipulaBD getManipulaBD() {
@@ -56,14 +58,20 @@ public class GerarRelatorioDaSemana {
 	}
 
 	/**
-	 * M�todo que retorna uma lista de atividades ordenadas de forma decrescente
-	 * pelo tempo investido em cada uma delas.
+	 * M�todo que retorna uma lista de atividades ordenadas de forma
+	 * decrescente pelo tempo investido em cada uma delas.
 	 * 
 	 * @return List<Atividade>
 	 */
-	public List<Atividade> getAtividadesOrdenadasDecrescente() {
-		Collections.sort(atividadesOrdenadasDecrescente,
-				new ComparadorPorPrioridade());
+	public List<Atividade> getAtividadesOrdenadasDecrescente(
+			OrdenacaoEnum tipoOrdenacao) {
+		if (tipoOrdenacao.equals(OrdenacaoEnum.PRIORIDADE)) {
+			Collections.sort(atividadesOrdenadasDecrescente,
+					new ComparadorPorPrioridade());
+		} else {
+			Collections.sort(atividadesOrdenadasDecrescente,
+					new ComparadorPorTempo());
+		}
 		return atividadesOrdenadasDecrescente;
 	}
 
@@ -74,7 +82,7 @@ public class GerarRelatorioDaSemana {
 
 	public List<String> getNomeAtivades() {
 		ArrayList<String> nomes = new ArrayList<String>();
-		for (Atividade atividade : getAtividadesOrdenadasDecrescente()) {
+		for (Atividade atividade : getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE)) {
 			nomes.add(atividade.getTitulo());
 		}
 
@@ -88,7 +96,7 @@ public class GerarRelatorioDaSemana {
 	 */
 	public List<Integer> getTempoAtivades() {
 		ArrayList<Integer> temp = new ArrayList<Integer>();
-		for (Atividade atividade : getAtividadesOrdenadasDecrescente()) {
+		for (Atividade atividade : getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE)) {
 			temp.add(Integer.valueOf(atividade.getTempo()));
 		}
 
@@ -108,26 +116,41 @@ public class GerarRelatorioDaSemana {
 			return n1 < n2 ? +1 : n1 > n2 ? -1 : 0;
 		}
 	}
-	
-	private static class ComparadorPorPrioridade implements Comparator<Atividade> {
+
+	private static class ComparadorPorPrioridade implements
+			Comparator<Atividade> {
 		public int compare(Atividade item1, Atividade item2) {
+			int saida = 0;
 			String n1 = item1.getPrioridade();
 			String n2 = item2.getPrioridade();
-			return n1.compareTo(n2) < n2.compareTo(n1) ? +1 : 
-				n1.compareTo(n2) > n2.compareTo(n1) ? -1 : 0;
+			if (n1.equals("Alta")) {
+				if (n2.equals("Normal") || n2.equals("Baixa")) {
+					saida = -1;
+				}
+			} else if (n1.equals("Normal")) {
+				if (n2.equals("Alta"))
+					saida = 1;
+				else if (n2.equals("Baixa"))
+					saida = -1;
+			} else {
+				if (n2.equals("Alta") || n2.equals("Normal"))
+					saida = 1;
+			}
+			return saida;
+
 		}
 	}
 
 	/**
-	 * Calcula a porcentagem de tempo investido de uma atividade em rela��o ao
-	 * tempo total de investido em uma semana
+	 * Calcula a porcentagem de tempo investido de uma atividade em rela��o
+	 * ao tempo total de investido em uma semana
 	 * 
 	 * @return List<String> porcentagens
 	 */
 	public List<String> porcentagemDecrescente() {
 		ArrayList<String> porcentagens = new ArrayList<String>();
 		double totalTempo = getTotalTempo();
-		for (Atividade atv : getAtividadesOrdenadasDecrescente()) {
+		for (Atividade atv : getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE)) {
 			double porcentagemAtv = (atv.getTempo() / totalTempo) * 100;
 			porcentagens.add(String.format("%.2f", porcentagemAtv) + "%");
 		}
@@ -141,7 +164,7 @@ public class GerarRelatorioDaSemana {
 	 */
 	private double getTotalTempo() {
 		float contador = 0;
-		for (Atividade atv : getAtividadesOrdenadasDecrescente()) {
+		for (Atividade atv : getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE)) {
 			contador += atv.getTempo();
 		}
 		return contador;
@@ -158,7 +181,14 @@ public class GerarRelatorioDaSemana {
 	protected boolean verificaFormatoData(String data) {
 		return true;
 	}
-	
-	
+
+	public List<String> getPrioridadeAtivades() {
+		ArrayList<String> temp = new ArrayList<String>();
+		for (Atividade atividade : getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE)) {
+			temp.add(String.valueOf(atividade.getPrioridade()));
+		}
+
+		return temp;
+	}
 
 }
