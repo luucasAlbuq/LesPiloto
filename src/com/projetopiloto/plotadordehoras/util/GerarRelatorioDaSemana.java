@@ -28,7 +28,7 @@ public class GerarRelatorioDaSemana {
 
 		atividadesOrdenadasDecrescente = new ArrayList<Atividade>();
 		try {
-			populaListaAtividades("01/06/2014", "07/06/2014");
+			populaListaAtividades("15/06/2014", "21/06/2014");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -63,7 +63,7 @@ public class GerarRelatorioDaSemana {
 	 */
 	public List<Atividade> getAtividadesOrdenadasDecrescente() {
 		Collections.sort(atividadesOrdenadasDecrescente,
-				new AtividadeComparator());
+				new ComparadorPorPrioridade());
 		return atividadesOrdenadasDecrescente;
 	}
 
@@ -101,11 +101,20 @@ public class GerarRelatorioDaSemana {
 	 * @author Pablo
 	 * 
 	 */
-	private static class AtividadeComparator implements Comparator<Atividade> {
+	private static class ComparadorPorTempo implements Comparator<Atividade> {
 		public int compare(Atividade item1, Atividade item2) {
 			int n1 = item1.getTempo();
 			int n2 = item2.getTempo();
 			return n1 < n2 ? +1 : n1 > n2 ? -1 : 0;
+		}
+	}
+	
+	private static class ComparadorPorPrioridade implements Comparator<Atividade> {
+		public int compare(Atividade item1, Atividade item2) {
+			String n1 = item1.getPrioridade();
+			String n2 = item2.getPrioridade();
+			return n1.compareTo(n2) < n2.compareTo(n1) ? +1 : 
+				n1.compareTo(n2) > n2.compareTo(n1) ? -1 : 0;
 		}
 	}
 
