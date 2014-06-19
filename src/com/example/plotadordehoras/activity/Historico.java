@@ -15,6 +15,8 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabContentFactory;
@@ -35,7 +37,7 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 	private static GerarRelatorioDaSemana gerarRelatorio;
 	private TabHost tabHost;
 	private ManipulaBD mbd;
-	private RadioButton ordenarPorTempo, ordenarPorPrioridade;
+	private RadioGroup radioGrupoOrdenacao;
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
@@ -59,8 +61,7 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 		/*
 		 * Instanciando os radios button do tipo de ordenacao
 		 */
-		ordenarPorTempo = (RadioButton) findViewById(R.id.tempoRadio);
-		ordenarPorPrioridade = (RadioButton) findViewById(R.id.prioridadeRadio);
+		radioGrupoOrdenacao = (RadioGroup) findViewById(R.id.ordenacaoRadio);
 
 		/*
 		 * Modificando o adptar das listView para pode ficar no formato desejado
@@ -68,14 +69,14 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 		 */
 		semanaAtualListView.setAdapter(new EfficientAdapter(this,
 				gerarRelatorio.getAtividadesOrdenadasDecrescente(
-						OrdenacaoEnum.PRIORIDADE).size(), SemanaEnum.ATUAL));
+						OrdenacaoEnum.TEMPO).size(), SemanaEnum.ATUAL));
 		semanaPassadaListView.setAdapter(new EfficientAdapter(this,
 				gerarRelatorio.getAtividadesOrdenadasDecrescente(
-						OrdenacaoEnum.PRIORIDADE).size(), SemanaEnum.PASSADA));
+						OrdenacaoEnum.TEMPO).size(), SemanaEnum.PASSADA));
 		semanaRetrasadaListView
 				.setAdapter(new EfficientAdapter(this, gerarRelatorio
 						.getAtividadesOrdenadasDecrescente(
-								OrdenacaoEnum.PRIORIDADE).size(),
+								OrdenacaoEnum.TEMPO).size(),
 						SemanaEnum.REPASSADA));
 
 		/*
@@ -109,21 +110,37 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 						return semanaRetrasadaListView;
 					}
 				}));
-		
-		
+
 		/*
 		 * Verificando quando o tipo de ordenação é selecionado
 		 */
-		if(ordenarPorPrioridade.isChecked()){
-			getGerarRelatorio().getAtividadesOrdenadasDecrescente(OrdenacaoEnum.PRIORIDADE);
-		}else if(ordenarPorTempo.isChecked()){
-			getGerarRelatorio().getAtividadesOrdenadasDecrescente(OrdenacaoEnum.TEMPO);
-		}
-		
-		
-		
+		radioGrupoOrdenacao.setOnCheckedChangeListener(new OnCheckedChangeListener() 
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                //Aqui vc pode colocar um switch/case para fazer uma tarefa para casa radio checado
+                 switch (checkedId) {
+                     case R.id.prioridadeRadio:
+                    	 
+                    	 getGerarRelatorio().ordenaAtividades(OrdenacaoEnum.PRIORIDADE);
+                    	 semanaAtualListView.setAdapter(new EfficientAdapter(getApplicationContext(),
+                 				gerarRelatorio.getAtividadesOrdenadasDecrescente(
+                 						OrdenacaoEnum.PRIORIDADE).size(), SemanaEnum.ATUAL));
+                    	 
+                         break;
+                     case R.id.tempoRadio:
+                    	 getGerarRelatorio().ordenaAtividades(OrdenacaoEnum.TEMPO);
+                    	 semanaAtualListView.setAdapter(new EfficientAdapter(getApplicationContext(),
+                  				gerarRelatorio.getAtividadesOrdenadasDecrescente(
+                  						OrdenacaoEnum.TEMPO).size(), SemanaEnum.ATUAL));
+                    	 
+                         break;
+                 }
+            }
+        });
+
+
 		/*
-		 *Ação de cadastra uma atividade 
+		 * Ação de cadastra uma atividade
 		 */
 		Button cadastratAtividade = (Button) findViewById(R.id.cadastroAtividade);
 		cadastratAtividade.setOnClickListener(new OnClickListener() {
@@ -137,7 +154,7 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 
 			}
 		});
-		
+
 		/*
 		 * Ação de gerar gráficos
 		 */

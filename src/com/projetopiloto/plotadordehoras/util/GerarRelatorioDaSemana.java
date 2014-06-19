@@ -173,6 +173,16 @@ public class GerarRelatorioDaSemana {
 		return contador;
 	}
 
+	/**
+	 * Atualiza a lista de atividades de acordo com o tipo de ordenação passado
+	 * como parametro
+	 * 
+	 * @param ordenacao
+	 */
+	public void ordenaAtividades(OrdenacaoEnum ordenacao) {
+		setAtividadesOrdenadasDecrescente(getAtividadesOrdenadasDecrescente(ordenacao));
+	}
+
 	// TODO
 	/**
 	 * Verifica se data esta no formato dd/mm/yyyy
@@ -201,7 +211,5 @@ public class GerarRelatorioDaSemana {
 	public void setTipoOrdenacao(OrdenacaoEnum tipoOrdenacao) {
 		this.tipoOrdenacao = tipoOrdenacao;
 	}
-	
-	
 
 }
