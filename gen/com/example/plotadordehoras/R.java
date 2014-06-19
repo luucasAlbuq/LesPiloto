@@ -34,6 +34,7 @@ public final class R {
         public static final int editTempoAtividade=0x7f06001a;
         public static final int idAtividade=0x7f060025;
         public static final int idPorcentagem=0x7f060026;
+        public static final int idPrioridade=0x7f060027;
         public static final int idTempoInvestido=0x7f060024;
         public static final int imageView1=0x7f06000e;
         public static final int mesAtividade=0x7f06000f;

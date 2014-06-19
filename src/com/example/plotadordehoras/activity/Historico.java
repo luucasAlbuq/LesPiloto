@@ -35,7 +35,6 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 	private static GerarRelatorioDaSemana gerarRelatorio;
 	private TabHost tabHost;
 	private ManipulaBD mbd;
-	
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
@@ -48,7 +47,6 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 
 		gerarRelatorio = new GerarRelatorioDaSemana(this);
 		mbd = ManipulaBD.getInstance(getApplicationContext());
-
 
 		/*
 		 * Instanciando as listVew
@@ -235,7 +233,7 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 			}
 
 			/*
-			 * Bloco para Teste, isso ï¿½ so pq no meu cel o BD da lastaco [Lucas]
+			 * Bloco para Teste, isso é so pq no meu cel o BD da lastaco [Lucas]
 			 */
 			ArrayList<String> nomesAtividadesTeste = new ArrayList<String>();
 			ArrayList<Integer> minTeste = new ArrayList<Integer>();
@@ -322,6 +320,9 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 			coluna.colunaPorcentagemTextView.setText(String
 					.valueOf(gerarRelatorio.porcentagemDecrescente().get(
 							position)));
+			coluna.colunaPrioridadeTextView.setText(String
+					.valueOf(gerarRelatorio.porcentagemDecrescente().get(
+							position)));
 
 			return convertView;
 		}
@@ -332,6 +333,7 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 		TextView colunaTempoInvestidoTextView;
 		TextView colunaAtividadeTextView;
 		TextView colunaPorcentagemTextView;
+		TextView colunaPrioridadeTextView;
 	}
 
 	public static GerarRelatorioDaSemana getGerarRelatorio() {

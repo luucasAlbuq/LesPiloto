@@ -38,5 +38,16 @@
         android:textStyle="bold"
         android:textColor="#7f0000">
      </TextView>
+     
+     <TextView
+        android:id="@+id/idPrioridade"
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:layout_marginLeft="10dip"
+        android:textSize="15dip"
+        android:textStyle="bold"
+        android:textColor="#7f0000">
+     </TextView>
  
 </LinearLayout>
