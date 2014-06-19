@@ -115,6 +115,7 @@ public class CadastroDeAtividade extends Activity{
 					editTempoAtividade.setText("");
 					nomeAtividade.requestFocus();
 					prioridadeAlta.setChecked(true);
+					editDataAtividade.setText(dataAtual);
 					
 					alertaSucesso.show();
 					

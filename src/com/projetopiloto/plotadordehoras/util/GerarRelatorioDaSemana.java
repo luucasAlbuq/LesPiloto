@@ -1,15 +1,21 @@
 package com.projetopiloto.plotadordehoras.util;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
-import com.projetopiloto.plotadordehoras.excecoes.AtividadeException;
-
-import android.content.Context;
 import model.Atividade;
 import DaoBD.ManipulaBD;
+import android.annotation.SuppressLint;
+import android.content.Context;
+
+import com.projetopiloto.plotadordehoras.excecoes.AtividadeException;
 
 /**
  * Classe responsavel por fornecer os dados no formato adequeado para a
@@ -29,7 +35,8 @@ public class GerarRelatorioDaSemana {
 
 		atividadesOrdenadasDecrescente = new ArrayList<Atividade>();
 		try {
-			populaListaAtividades("15/06/2014", "21/06/2014");
+			List<String> datas = getDatasDaSemana(SemanaEnum.ATUAL);
+			populaListaAtividades(datas.get(0), datas.get(1));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -210,6 +217,37 @@ public class GerarRelatorioDaSemana {
 
 	public void setTipoOrdenacao(OrdenacaoEnum tipoOrdenacao) {
 		this.tipoOrdenacao = tipoOrdenacao;
+	}
+
+	@SuppressLint("SimpleDateFormat")
+	public List<String> getDatasDaSemana(SemanaEnum semana) {
+		List<String> datas = new ArrayList<String>();
+		Date data = new Date();
+		GregorianCalendar calendar = new GregorianCalendar();
+		calendar.setTime(data);
+		SimpleDateFormat formataData = new SimpleDateFormat("dd/MM/yyyy");
+		if (semana.equals(SemanaEnum.ATUAL)) {
+			calendar.set(Calendar.WEEK_OF_YEAR,
+					calendar.get(Calendar.WEEK_OF_YEAR));
+			
+		} else if (semana.equals(SemanaEnum.PASSADA)) {
+			calendar.set(Calendar.WEEK_OF_YEAR,
+					calendar.get(Calendar.WEEK_OF_YEAR)-1);
+			
+			
+		} else {
+			calendar.set(Calendar.WEEK_OF_YEAR,
+					calendar.get(Calendar.WEEK_OF_YEAR) - 2);
+			
+		}
+		calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+		String dataInicial = formataData.format(calendar.getTime());
+		calendar.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+		String dataFinal = formataData.format(calendar.getTime());
+		datas.add(dataInicial);
+		datas.add(dataFinal);
+
+		return datas;
 	}
 
 }

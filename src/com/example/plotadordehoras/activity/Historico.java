@@ -1,6 +1,6 @@
 package com.example.plotadordehoras.activity;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import DaoBD.ManipulaBD;
 import android.app.TabActivity;
@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TabHost;
@@ -23,6 +22,7 @@ import android.widget.TabHost.TabContentFactory;
 import android.widget.TextView;
 
 import com.example.plotadordehoras.R;
+import com.projetopiloto.plotadordehoras.excecoes.AtividadeException;
 import com.projetopiloto.plotadordehoras.util.GerarRelatorioDaSemana;
 import com.projetopiloto.plotadordehoras.util.OrdenacaoEnum;
 import com.projetopiloto.plotadordehoras.util.PieGraph;
@@ -38,8 +38,8 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 	private TabHost tabHost;
 	private ManipulaBD mbd;
 	private RadioGroup radioGrupoOrdenacao;
+	private static List<String> datas;
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -67,10 +67,14 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 		 * Modificando o adptar das listView para pode ficar no formato desejado
 		 * Com tres colunas
 		 */
-		if (semanaAtualListView.isClickable()) {
+		
+		if (semanaAtualListView.isClickable()) {		
 			semanaAtualListView.setAdapter(new EfficientAdapter(this,
 					gerarRelatorio.getAtividadesOrdenadasDecrescente(
 							OrdenacaoEnum.TEMPO).size(), SemanaEnum.ATUAL));
+			
+			System.out.println("IF semana atual");
+			
 		} else if (semanaPassadaListView.isClickable()) {
 			semanaPassadaListView.setAdapter(new EfficientAdapter(this,
 					gerarRelatorio.getAtividadesOrdenadasDecrescente(
@@ -113,6 +117,42 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 						return semanaRetrasadaListView;
 					}
 				}));
+		
+		tabHost.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				if(semanaAtualListView.isClickable()){
+					try {
+						datas = getGerarRelatorio().getDatasDaSemana(SemanaEnum.ATUAL);
+						getGerarRelatorio().populaListaAtividades(datas.get(0), datas.get(1));
+					} catch (AtividadeException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}else if(semanaPassadaListView.isClickable()){
+					datas = getGerarRelatorio().getDatasDaSemana(SemanaEnum.PASSADA);
+					try {
+						getGerarRelatorio().populaListaAtividades(datas.get(0), datas.get(1));
+					} catch (AtividadeException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}else if(semanaRetrasadaListView.isClickable()){
+					datas = getGerarRelatorio().getDatasDaSemana(SemanaEnum.REPASSADA);
+					try {
+						getGerarRelatorio().populaListaAtividades(datas.get(0), datas.get(1));
+					} catch (AtividadeException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+			}
+		});
 
 		/*
 		 * Verificando quando o tipo de ordenação é selecionado
@@ -301,28 +341,34 @@ public class Historico extends TabActivity implements OnTabChangeListener {
 			 * Fim do bloco de teste
 			 */
 
-			// if (semana.equals(SemanaEnum.ATUAL)) {
-			// try {
-			// gerarRelatorio.populaListaAtividades("11/06/2014",
-			// "15/06/2014");
-			// } catch (Exception e) {
-			// e.printStackTrace();
-			// }
-			// } else if (semana.equals(SemanaEnum.PASSADA)) {
-			// try {
-			// gerarRelatorio.populaListaAtividades("11/06/2014",
-			// "15/06/2014");
-			// } catch (Exception e) {
-			// e.printStackTrace();
-			// }
-			// } else if (semana.equals(SemanaEnum.REPASSADA)) {
-			// try {
-			// gerarRelatorio.populaListaAtividades("11/06/2014",
-			// "15/06/2014");
-			// } catch (Exception e) {
-			// e.printStackTrace();
-			// }
-			// }
+			if (semana.equals(SemanaEnum.ATUAL)) {
+				try {
+					datas = getGerarRelatorio().getDatasDaSemana(
+							SemanaEnum.ATUAL);
+					gerarRelatorio.populaListaAtividades(datas.get(0),
+							datas.get(1));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else if (semana.equals(SemanaEnum.PASSADA)) {
+				try {
+					datas = getGerarRelatorio().getDatasDaSemana(
+							SemanaEnum.PASSADA);
+					gerarRelatorio.populaListaAtividades(datas.get(0),
+							datas.get(1));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else if (semana.equals(SemanaEnum.REPASSADA)) {
+				try {
+					datas = getGerarRelatorio().getDatasDaSemana(
+							SemanaEnum.REPASSADA);
+					gerarRelatorio.populaListaAtividades(datas.get(0),
+							datas.get(1));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 
 			coluna.colunaAtividadeTextView.setText(String
 					.valueOf(gerarRelatorio.getNomeAtivades().get(position)));
