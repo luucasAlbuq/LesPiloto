@@ -1,19 +1,21 @@
 package com.example.plotadordehoras.activity;
 
 import java.util.Date;
+import java.util.List;
+
+import model.Atividade;
+import model.Mes;
+import android.content.Context;
 
 import com.projetopiloto.plotadordehoras.util.GerarRelatorioDaSemana;
-
-import model.Mes;
-import DaoBD.ManipulaBD;
-import android.content.Context;
 
 public class Lembrador {
 	
 	private Date today;
 	private GerarRelatorioDaSemana relatorio;
 	
-	public Lembrador() {
+	public Lembrador(Context context) {
+		relatorio = new GerarRelatorioDaSemana(context);
 		
 	}
 	
@@ -30,6 +32,18 @@ public class Lembrador {
 	
 	public Date getData(){
 		return today;
+	}
+	
+	public List<Atividade> getTeste(){
+		System.out.println(">>>>");
+		System.out.println(relatorio == null);
+
+		return relatorio.getAtividadesOrdenadasDecrescente();
+	}
+	
+	public String getTesteString(){
+
+		return relatorio.getTeste();
 	}
 
 }
